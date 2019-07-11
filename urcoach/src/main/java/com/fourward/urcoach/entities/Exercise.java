@@ -36,18 +36,19 @@ public class Exercise {
     @Column(name = "exercise_video") private String exerciseVideo;
     @Column(name = "exercise_text") private String exerciseText;
     @Column(name = "exercise_cal") private String exerciseCal;
-    @Column(name = "exercise_minute") private String exerciseMinute;
+    @Column(name = "exercise_Time") private String exerciseTime;
     @Column(name = "routine_id") private Long challengeId;
 
     @Builder
     private Exercise(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText,
-                        String exerciseCal, String exerciseMinute){
+                        String exerciseCal, String exerciseTime){
+                            
         this.exerciseName = exerciseName;
         this.exerciseSet = exerciseSet;
         this.exerciseCount = exerciseCount;
         this.exerciseVideo = exerciseVideo;
         this.exerciseText = exerciseText;
         this.exerciseCal = exerciseCal;
-        this.exerciseMinute = exerciseMinute;
+        this.exerciseTime = exerciseTime;
     }
 }

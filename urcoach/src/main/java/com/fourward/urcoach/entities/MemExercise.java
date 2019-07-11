@@ -31,14 +31,14 @@ public class MemExercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "mem_exercise_id") private Long memExerciseId;
     @Column(name = "member_id") private Long memberId;
-    @Column(name = "exercise_date") private Date exerciseDate;
+    @Column(name = "exercise_date") private String exerciseDate;
     @Column(name = "exercise_name") private String exerciseName;
     @Column(name = "exercise_cal") private Long exerciseCal;
     @Column(name = "exercise_time") private Long exerciseTime;
     @Column(name = "exercise_complete") private Boolean exerciseComplete;
 
     @Builder
-    private MemExercise(Date exerciseDate, Boolean exerciseComplete){
+    private MemExercise(String exerciseDate, Boolean exerciseComplete){
 
         this.exerciseDate = exerciseDate;
         this.exerciseComplete = exerciseComplete;

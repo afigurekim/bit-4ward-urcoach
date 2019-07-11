@@ -14,6 +14,6 @@ import lombok.Data;
 public class ExerciseDTO {
 
     private Long exerciseId, challengeId;
-    private String exercise_name, exercise_set, exercise_count, exercise_video, exercise_text, exerciseCal, exerciseMinute;
+    private String exercise_name, exercise_set, exercise_count, exercise_video, exercise_text, exerciseCal, exerciseTime;
     
 }

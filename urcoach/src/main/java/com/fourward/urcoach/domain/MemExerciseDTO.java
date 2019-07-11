@@ -15,11 +15,11 @@ import lombok.Data;
 @Lazy
 public class MemExerciseDTO {
 
-    private Long memExerciseId, memberId, exerciseCal, exerciseTime;
+    private Long memExerciseId, memberId, exerciseCal;
     
     private String exerciseName;
 
-    private Date exerciseDate;
+    private String exerciseDate, exerciseTime;
 
     private Boolean exerciseComplete;
     

@@ -22,7 +22,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name = "gyms")
+
 public class Gym {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;

@@ -24,6 +24,7 @@ import lombok.ToString;
 @ToString
 @Table (name = "coaches")
 public class Coach implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,15 +40,6 @@ public class Coach implements Serializable {
     @Column(name="coach_resume_2") private String coachResume2;
     @Column(name="coach_resume_3") private String coachResume3;
     @Column(name="photo") private String photo;
-
-    
-      @Override
-    public String toString() {
-        return "Coach [coachId=" + coachId + ", coachInfo=" + coachInfo + ", coachLink=" + coachLink + ", coachLoc="
-                + coachLoc + ", coachResume1=" + coachResume1 + ", coachResume2=" + coachResume2 + ", coachResume3="
-                + coachResume3 + ", coachName=" + coachName + ", id=" + id + ", password=" + password + ", photo="
-                + photo + "]";
-    }
 
     @Builder
     public Coach(Long id, String coachId, String coachName, String password, String coachLoc, String coachInfo,
