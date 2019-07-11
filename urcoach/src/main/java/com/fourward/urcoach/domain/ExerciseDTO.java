@@ -13,7 +13,7 @@ import lombok.Data;
 @Lazy
 public class ExerciseDTO {
 
-    private Long id;
+    private Long exerciseId, routineId;
     private String exercise_name, exercise_set, exercise_count, exercise_video, exercise_text;
     
 }

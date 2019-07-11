@@ -31,6 +31,7 @@ public class Challenge implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "challenge_id") Long challengeId;
     @Column(name = "challenge_name") private String challengeName;
+    @Column(name = "member_id") private Long memberId;
 
     @Builder
     private Challenge(String challengeName){

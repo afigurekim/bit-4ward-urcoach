@@ -31,7 +31,8 @@ public class Routine {
     @Column(name = "routine_id") Long routineId;
     
     @Column(name = "routine_name") private String routineName;
-    @Column(name = "challenge_id") private String challengeId;
+    @Column(name = "challenge_id") private Long challengeId;
+    
 
     @Builder
     private Routine(String routineName){

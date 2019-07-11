@@ -30,8 +30,8 @@ public class Member implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name = "member_id") private String memberId;
+    @Column(name = "member_id") private Long memberId;
+    @Column(name = "member_email") private String memberEmail;
     @Column(name = "member_type") private String memberType;
     @Column(name = "member_name") private String memberName;
     @Column(name = "member_height") private String memberHeight;
@@ -39,9 +39,9 @@ public class Member implements Serializable{
     @Column(name = "member_photo") private String memberPhoto;
     
     @Builder
-    private Member(String memberId, String memberType, String memberName, String memberHeight, String memberWeight, String memberPhoto){
+    private Member(String memberEmail, String memberType, String memberName, String memberHeight, String memberWeight, String memberPhoto){
 
-        this.memberId = memberId;
+        this.memberEmail = memberEmail;
         this.memberType = memberType;
         this.memberName = memberName;
         this.memberHeight = memberHeight;

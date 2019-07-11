@@ -35,6 +35,7 @@ public class Exercise {
     @Column(name = "exercise_count") private String exerciseCount;
     @Column(name = "exercise_video") private String exerciseVideo;
     @Column(name = "exercise_text") private String exerciseText;
+    @Column(name = "routine_id") private Long routinId;
 
     @Builder
     private Exercise(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText){

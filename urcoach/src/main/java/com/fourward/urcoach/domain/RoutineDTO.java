@@ -14,8 +14,8 @@ import lombok.Data;
 @Lazy
 public class RoutineDTO {
 
-    private Long id;
-    private String routineName, challengeId;
+    private Long routineId, challengeId;
+    private String routineName;
     
 
 }
