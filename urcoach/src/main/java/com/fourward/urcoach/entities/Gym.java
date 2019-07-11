@@ -32,5 +32,7 @@ public class Gym {
   private String gymInfo;
   private String gymTime;
   private String gymLoc;
+
+  
     
 }

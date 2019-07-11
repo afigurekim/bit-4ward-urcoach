@@ -14,7 +14,8 @@ import lombok.Data;
 @Lazy
 public class MemberDTO {
 
-    private Long memberId, memberType, memberHeight, memberWeight;
-    private String memberEmail, memberName, memberPhoto;
-    
+    private Integer memberType;
+    private Long memberId;
+    private String memberEmail, memberPw, memberName, memberPhoto, memberHeight, memberWeight,
+                    coachLoc, coachInfo, coachLink, coachResume1, coachResume2, coachResume3, coachResume4, coachResume5;
 }

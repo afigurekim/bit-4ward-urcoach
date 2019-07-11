@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -30,12 +31,13 @@ public class MemExercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "mem_exercise_id") private Long memExerciseId;
-    @Column(name = "member_id") private Long memberId;
     @Column(name = "exercise_date") private String exerciseDate;
-    @Column(name = "exercise_name") private String exerciseName;
-    @Column(name = "exercise_cal") private Long exerciseCal;
-    @Column(name = "exercise_time") private Long exerciseTime;
     @Column(name = "exercise_complete") private Boolean exerciseComplete;
+
+    @JoinColumn(name = "member_id") private Member memberId;
+    @JoinColumn(name = "exercise_name") private Exercise exerciseName;
+    @JoinColumn(name = "exercise_cal") private Exercise exerciseCal;
+    @JoinColumn(name = "exercise_time") private Exercise exerciseTime;
 
     @Builder
     private MemExercise(String exerciseDate, Boolean exerciseComplete){

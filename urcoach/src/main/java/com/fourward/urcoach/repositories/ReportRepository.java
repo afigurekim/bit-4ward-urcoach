@@ -1,15 +1,15 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Challenges;
+import com.fourward.urcoach.entities.Report;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * ChallengeRepository
+ * ReportRepository
  */
-
 @Repository
-public interface ChallengeRepository extends JpaRepository<Challenges, Long> {
+public interface ReportRepository extends JpaRepository<Report, Long>{
+
     
 }

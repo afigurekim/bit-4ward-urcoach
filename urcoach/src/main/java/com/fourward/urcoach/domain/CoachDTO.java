@@ -8,19 +8,18 @@ import lombok.Data;
 /**
  * CoachDTO
  */
-
-@Data @Component @Lazy
+@Data
+@Component
+@Lazy
 public class CoachDTO {
 
-    private String  coachId,
-                    coachName,
-                    $http,
-                    password,
-                    coachLoc,
+    private Long coachId;
+    private String coachLoc,
                     coachInfo,
                     coachLink,
                     coachResume1,
                     coachResume2,
                     coachResume3,
-                    photo;
-                }
+                    coachResume4,
+                    coachResume5;
+}

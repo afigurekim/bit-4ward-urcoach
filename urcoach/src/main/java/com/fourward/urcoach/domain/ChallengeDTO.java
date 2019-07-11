@@ -14,7 +14,7 @@ import lombok.Data;
 @Lazy
 public class ChallengeDTO {
 
-    private Long challengeId, memberId;
+    private Long challengeId;
     private String challengeName, ChallengeText, ChallengePhoto;
     
 }
