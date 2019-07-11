@@ -15,6 +15,6 @@ import lombok.Data;
 public class ChallengeDTO {
 
     private Long challengeId, memberId;
-    private String challengeName;
+    private String challengeName, ChallengeText, ChallengePhoto;
     
 }
