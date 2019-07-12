@@ -92,7 +92,7 @@ class App extends Component {
                 </Box>
                 {showSidebar &&(
                   <Collapsible direction="vertical" open={showSidebar}>
-                    <Layer>
+                    <Layer margin={ "top": "small" } full>
                       <Box
                         background='brand'
                         tag='header'
