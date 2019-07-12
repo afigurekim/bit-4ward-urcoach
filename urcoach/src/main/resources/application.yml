@@ -4,13 +4,15 @@ spring:
             prefix: /
             suffix: .html
     datasource:
-        url: jdbc:mariadb://fourwarddb.ciybg9cfktgy.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb
+        url: jdbc:mariadb://fourwarddb.cowfpof74cuw.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb
         driverClassName: org.mariadb.jdbc.Driver
         username: fourwarddb
         password: fourwarddb
     jpa:
         hibernate:
             ddl-auto: create
-        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MariaDBDialect
 server:
     port: 9000

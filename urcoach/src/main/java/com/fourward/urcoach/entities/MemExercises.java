@@ -32,7 +32,7 @@ public class MemExercises {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mem_exercise_id") private Long memExerciseId;
     @Column(name = "mem_exercise_date") private String memExerciseDate;
     @Column(name = "mem_exercise_time") private String memExerciseTime;

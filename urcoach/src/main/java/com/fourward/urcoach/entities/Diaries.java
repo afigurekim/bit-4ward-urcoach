@@ -31,7 +31,7 @@ public class Diaries {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "diary_id") private Long diaryId;
     @Column(name = "diary_date") private String diaryDate;
     @Column(name = "diary_photo") private String diaryPhoto;

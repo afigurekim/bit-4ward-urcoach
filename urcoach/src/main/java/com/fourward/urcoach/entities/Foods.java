@@ -35,7 +35,7 @@ public class Foods {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_id") private Long foodId;
     @Column(name = "food_name") private String foodName;
     @Column(name = "food_cal") private String foodCal;

@@ -32,7 +32,7 @@ public class Reports {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_id") private Long reportId;
     @Column(name = "report_date") private String reportDate;
     @Column(name = "report_cal_out") private String reportCalOut;

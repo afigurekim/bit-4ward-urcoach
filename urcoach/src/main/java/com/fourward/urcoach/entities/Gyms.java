@@ -30,7 +30,7 @@ import lombok.ToString;
 public class Gyms {
   
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "gym_id") private Long gymId;
   @Column(name ="gym_name")private String gymName;
   @Column(name = "gym_info")private String gymInfo;

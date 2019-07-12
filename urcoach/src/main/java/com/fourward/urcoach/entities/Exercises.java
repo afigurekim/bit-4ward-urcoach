@@ -32,7 +32,7 @@ public class Exercises {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_id") private Long exerciseId;
 
     @Column(name = "exercise_name") private String exerciseName;

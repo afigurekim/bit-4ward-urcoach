@@ -37,11 +37,11 @@ public class Coaches implements Serializable {
     @Column(name="coach_link") private String coachLink;
     @Column(name="coach_photo") private String coachPhoto;
     @Column(name="coach_name") private String coachName;
-    @Column(name="coach_resume_1") private String coachResume1;
-    @Column(name="coach_resume_2") private String coachResume2;
-    @Column(name="coach_resume_3") private String coachResume3;
-    @Column(name="coach_resume_4") private String coachResume4;
-    @Column(name="coach_resume_5") private String coachResume5;
+    @Column(name="coach_resume1") private String coachResume1;
+    @Column(name="coach_resume2") private String coachResume2;
+    @Column(name="coach_resume3") private String coachResume3;
+    @Column(name="coach_resume4") private String coachResume4;
+    @Column(name="coach_resume5") private String coachResume5;
 
     @ManyToOne
     @JoinColumn(name = "member_id") private Members members;
