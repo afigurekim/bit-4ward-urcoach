@@ -10,4 +10,3 @@ spring:
         password: mariadb
 server:
     port: 9000
-

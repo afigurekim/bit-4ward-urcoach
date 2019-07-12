@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,6 +24,7 @@ import lombok.ToString;
 /**
  * Food
  */
+@Component
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter

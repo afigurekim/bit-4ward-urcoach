@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +20,7 @@ import lombok.ToString;
  * Gym
  */
 
+@Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 @Getter

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +20,8 @@ import lombok.ToString;
 /**
  * Report
  */
+
+@Component
 @Entity
 @Getter
 @ToString
@@ -35,7 +39,7 @@ public class Reports {
     @Column(name = "report_cal_in") private String reportCalIn;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members memberId;
+    @JoinColumn(name = "member_id") private Members members;
 
     @Builder
     private Reports(String reportDate, String reportCalOut, String reportCalIn){

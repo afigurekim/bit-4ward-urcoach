@@ -2,12 +2,15 @@ package com.fourward.urcoach.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,7 +21,7 @@ import lombok.ToString;
 /**
  * Exercise
  */
-
+@Component
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
@@ -39,8 +42,9 @@ public class Exercises {
     @Column(name = "exercise_text") private String exerciseText;
     @Column(name = "exercise_cal") private String exerciseCal;
 
-    @ManyToOne
-    @JoinColumn(name = "challenge_id") private Challenges challengeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "challenge_id")
+    private Challenges challenges;
 
     @Builder
     private Exercises(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText,

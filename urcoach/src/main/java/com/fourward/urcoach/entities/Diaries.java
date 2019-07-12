@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +20,7 @@ import lombok.ToString;
 /**
  * Diary
  */
-
+@Component
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
@@ -42,7 +44,7 @@ public class Diaries {
     @Column(name = "diary_comment") private String diaryComment;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members memberId;
+    @JoinColumn(name = "member_id") private Members members;
 
     @Builder
     private Diaries(String diaryDate, String diaryPhoto, String diaryDays, String diaryGoal, 

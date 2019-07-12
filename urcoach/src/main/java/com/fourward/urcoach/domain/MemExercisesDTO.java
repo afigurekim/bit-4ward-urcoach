@@ -1,7 +1,5 @@
 package com.fourward.urcoach.domain;
 
-import java.util.Date;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 

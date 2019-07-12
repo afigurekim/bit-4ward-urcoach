@@ -7,8 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,6 +20,7 @@ import lombok.ToString;
 /**
  * Meal
  */
+@Component
 @Entity
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -36,10 +38,10 @@ public class Meals {
     @Column(name = "meal_cal") private String mealCal;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members memberId;
+    @JoinColumn(name = "member_id") private Members members;
 
     @ManyToOne
-    @JoinColumn(name = "food_name") private Foods foodName;
+    @JoinColumn(name = "food_name") private Foods foods;
 
     @Builder
     private Meals(String mealDate, String mealTime, String mealCal){

@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +18,7 @@ import lombok.ToString;
 /**
  * Coach
  */
-
+@Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 @Getter
@@ -42,7 +44,7 @@ public class Coaches implements Serializable {
     @Column(name="coach_resume_5") private String coachResume5;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members memberId;
+    @JoinColumn(name = "member_id") private Members members;
 
     @Builder
     public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto, String coachName,

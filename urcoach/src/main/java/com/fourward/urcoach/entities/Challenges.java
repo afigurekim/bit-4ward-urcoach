@@ -6,12 +6,16 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,6 +27,7 @@ import lombok.ToString;
  * Challenge
  */
 @Entity
+@Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @ToString
@@ -38,7 +43,8 @@ public class Challenges implements Serializable{
     @Column(name = "challenge_text") private String challengeText;
     @Column(name = "challenge_photo") private String challengePhoto;
 
-    @OneToMany(mappedBy = "challenges")
+    @OneToMany(mappedBy = "challenges", orphanRemoval = true , fetch = FetchType.LAZY)
+    @Cascade(CascadeType.DELETE)
     private List<Exercises> Exercises = new ArrayList<>();
 
     @Builder
