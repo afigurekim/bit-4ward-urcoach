@@ -1,15 +1,16 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Coach;
+
+import com.fourward.urcoach.entities.Meals;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * CoachRepository
+ * MealRepository
  */
 @Repository
-public interface CoachRepository extends JpaRepository<Coach, Long>{
+public interface MealsRepository extends JpaRepository<Meals, Long> {
 
     
 }

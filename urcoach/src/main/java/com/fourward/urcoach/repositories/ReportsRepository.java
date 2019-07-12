@@ -1,6 +1,6 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Report;
+import com.fourward.urcoach.entities.Reports;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * ReportRepository
  */
 @Repository
-public interface ReportRepository extends JpaRepository<Report, Long>{
+public interface ReportsRepository extends JpaRepository<Reports, Long>{
 
     
 }

@@ -29,8 +29,8 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @ToString
-@Table(name = "member")
-public class Member implements Serializable{
+@Table(name = "Members")
+public class Members implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -45,21 +45,28 @@ public class Member implements Serializable{
     @Column(name = "member_weight") private String memberWeight;
     @Column(name = "member_photo") private String memberPhoto;
     
-    @OneToMany
+    @OneToMany(mappedBy = "members")
     @Cascade(CascadeType.DELETE)
-    private List<Report> reports = new ArrayList<>();
+    private List<Reports> reports = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "members")
     @Cascade(CascadeType.DELETE)
-    private List<Meal> meals = new ArrayList<>();
+    private List<Meals> meals = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "members")
     @Cascade(CascadeType.DELETE)
-    private List<Diary> diaries = new ArrayList<>();
+    private List<Diaries> diaries = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "members")
+    @Cascade(CascadeType.DELETE)
+    private List<Coaches> coaches = new ArrayList<>();
+  
+    @OneToMany(mappedBy = "members")
+    @Cascade(CascadeType.DELETE)
+    private List<MemExercises> memExercises = new ArrayList<>();
+    
     @Builder
-    private Member(String memberEmail, String memberPw, Integer memberType, String memberName, String memberHeight, String memberWeight, String memberPhoto){
+    private Members(String memberEmail, String memberPw, Integer memberType, String memberName, String memberHeight, String memberWeight, String memberPhoto){
 
         this.memberEmail = memberEmail;
         this.memberPw = memberPw;

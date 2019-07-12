@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class ReportDTO {
+public class ReportsDTO {
 
     private Long reportId;
     private String reportDate, reportCalOut, reportCalIn;

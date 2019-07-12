@@ -6,14 +6,15 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 /**
- * DiaryDTO
+ * challengeDTO
  */
+
 @Data
 @Component
 @Lazy
-public class DiaryDTO {
+public class ChallengesDTO {
 
-    private Long diaryId;
-    private String diaryDate, diaryPhoto, diaryDays, diaryGoal, diaryFat, diaryWater, diaryMuscle, diarySkeletal, diaryComment;
+    private Long challengeId;
+    private String challengeName, ChallengeText, ChallengePhoto;
     
 }

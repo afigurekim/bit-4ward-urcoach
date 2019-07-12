@@ -12,10 +12,9 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class MemberDTO {
+public class MembersDTO {
 
     private Integer memberType;
     private Long memberId;
-    private String memberEmail, memberPw, memberName, memberPhoto, memberHeight, memberWeight,
-                    coachLoc, coachInfo, coachLink, coachResume1, coachResume2, coachResume3, coachResume4, coachResume5;
+    private String memberEmail, memberPw, memberName, memberPhoto, memberHeight, memberWeight;
 }

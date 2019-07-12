@@ -1,5 +1,6 @@
 package com.fourward.urcoach.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,23 +22,23 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Table(name = "report")
-public class Report {
+@Table(name = "Reports")
+public class Reports {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long reportId;
-    private String reportDate;
-    private String reportCalOut;
-    private String reportCalIn;
+    @Column(name = "report_id") private Long reportId;
+    @Column(name = "report_date") private String reportDate;
+    @Column(name = "report_cal_out") private String reportCalOut;
+    @Column(name = "report_cal_in") private String reportCalIn;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Member memberId;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @Builder
-    private Report(String reportDate, String reportCalOut, String reportCalIn){
+    private Reports(String reportDate, String reportCalOut, String reportCalIn){
 
         this.reportDate = reportDate;
         this.reportCalOut = reportCalOut;

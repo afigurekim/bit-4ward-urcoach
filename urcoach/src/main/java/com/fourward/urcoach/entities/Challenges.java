@@ -39,7 +39,7 @@ public class Challenges implements Serializable{
     @Column(name = "challenge_photo") private String challengePhoto;
 
     @OneToMany(mappedBy = "challenges")
-    private List<Exercise> Exercises = new ArrayList<>();
+    private List<Exercises> Exercises = new ArrayList<>();
 
     @Builder
     private Challenges(String challengeName, String challengeText, String challengePhoto){

@@ -6,15 +6,14 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 /**
- * challengeDTO
+ * exerciseDTO
  */
-
 @Data
 @Component
 @Lazy
-public class ChallengeDTO {
+public class ExercisesDTO {
 
-    private Long challengeId;
-    private String challengeName, ChallengeText, ChallengePhoto;
+    private Long exerciseId;
+    private String exerciseName, exerciseSet, exerciseCount, exerciseVideo, exerciseText, exerciseCal;
     
 }

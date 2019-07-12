@@ -23,8 +23,8 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @ToString
-@Table(name = "diary")
-public class Diary {
+@Table(name = "diaries")
+public class Diaries {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,10 +42,10 @@ public class Diary {
     @Column(name = "diary_comment") private String diaryComment;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Member memberId;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @Builder
-    private Diary(String diaryDate, String diaryPhoto, String diaryDays, String diaryGoal, 
+    private Diaries(String diaryDate, String diaryPhoto, String diaryDays, String diaryGoal, 
                     String diaryFat, String diaryWater, String diaryMuscle, String diarySkeletal, String diaryComment){
                     
         this.diaryDate = diaryDate;

@@ -24,13 +24,13 @@ import lombok.ToString;
 @Getter
 @ToString
 @Table(name = "exercises")
-public class Exercise {
+public class Exercises {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long exerciseId;
+    @Column(name = "exercise_id") private Long exerciseId;
 
     @Column(name = "exercise_name") private String exerciseName;
     @Column(name = "exercise_set") private String exerciseSet;
@@ -38,14 +38,13 @@ public class Exercise {
     @Column(name = "exercise_video") private String exerciseVideo;
     @Column(name = "exercise_text") private String exerciseText;
     @Column(name = "exercise_cal") private String exerciseCal;
-    @Column(name = "exercise_Time") private String exerciseTime;
 
     @ManyToOne
     @JoinColumn(name = "challenge_id") private Challenges challengeId;
 
     @Builder
-    private Exercise(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText,
-                        String exerciseCal, String exerciseTime){
+    private Exercises(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText,
+                        String exerciseCal){
                             
         this.exerciseName = exerciseName;
         this.exerciseSet = exerciseSet;
@@ -53,6 +52,5 @@ public class Exercise {
         this.exerciseVideo = exerciseVideo;
         this.exerciseText = exerciseText;
         this.exerciseCal = exerciseCal;
-        this.exerciseTime = exerciseTime;
     }
 }

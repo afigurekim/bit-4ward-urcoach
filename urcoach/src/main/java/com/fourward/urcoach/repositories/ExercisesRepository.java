@@ -1,14 +1,15 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.MemExercise;
+import com.fourward.urcoach.entities.Exercises;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * MemExerciseRepository
+ * ExerciseRepository
  */
 @Repository
-public interface MemExerciseRepository extends JpaRepository<MemExercise, Long>{
+public interface ExercisesRepository extends JpaRepository<Exercises, Long> {
+
     
 }

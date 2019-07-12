@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 /**
- * FoodDTO
+ * MealDTO
  */
 @Data
 @Component
 @Lazy
-public class FoodDTO {
+public class MealsDTO {
 
-    private Long foodId;
-    private String foodName, foodCal;
+    private Long mealId;
+    private String mealDate, mealTime, mealCal;
     
-    
+
 }

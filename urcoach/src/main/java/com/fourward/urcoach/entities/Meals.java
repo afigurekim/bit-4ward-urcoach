@@ -1,11 +1,13 @@
 package com.fourward.urcoach.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -21,27 +23,29 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
-@Table(name = "meal")
-public class Meal {
+@Table(name = "Meals")
+public class Meals {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long mealId;
-    private String mealDate;
-    private String mealTime;
+    @Column(name = "meal_id") private Long mealId;
+    @Column(name = "meal_date") private String mealDate;
+    @Column(name = "meal_time") private String mealTime;
+    @Column(name = "meal_cal") private String mealCal;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Member memberId;
+    @JoinColumn(name = "member_id") private Members memberId;
 
-    @JoinColumn(name = "food_name") private Food foodName;
-    @JoinColumn(name = "food_cal") private Food foodCal;
+    @ManyToOne
+    @JoinColumn(name = "food_name") private Foods foodName;
 
     @Builder
-    private Meal(String mealDate, String mealTime){
+    private Meals(String mealDate, String mealTime, String mealCal){
 
         this.mealDate = mealDate;
         this.mealTime = mealTime;
+        this.mealCal = mealCal;
     }
 }

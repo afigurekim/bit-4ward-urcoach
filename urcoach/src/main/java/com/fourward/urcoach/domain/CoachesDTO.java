@@ -11,12 +11,14 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class CoachDTO {
+public class CoachesDTO {
 
     private Long coachId;
-    private String coachLoc,
+    private String  coachName,
+                    coachLoc,
                     coachInfo,
                     coachLink,
+                    coachPhoto,
                     coachResume1,
                     coachResume2,
                     coachResume3,

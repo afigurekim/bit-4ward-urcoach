@@ -1,14 +1,16 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Gym;
+
+import com.fourward.urcoach.entities.Members;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * GymRepository
+ * MemberRepository
  */
 @Repository
-public interface GymRepository extends JpaRepository<Gym, Long>{
+public interface MembersRepository extends JpaRepository<Members, Long> {
+
     
 }

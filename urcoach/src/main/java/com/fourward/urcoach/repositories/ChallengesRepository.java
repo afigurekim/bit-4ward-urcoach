@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface ChallengeRepository extends JpaRepository<Challenges, Long> {
+public interface ChallengesRepository extends JpaRepository<Challenges, Long> {
     
 }

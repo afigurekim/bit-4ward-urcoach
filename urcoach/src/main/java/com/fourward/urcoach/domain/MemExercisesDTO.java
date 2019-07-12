@@ -13,11 +13,11 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class MemExerciseDTO {
+public class MemExercisesDTO {
 
     private Long memExerciseId;
 
-    private String exerciseDate;
+    private String memExerciseDate, memExerciseCal, memExerciseTime;
 
     private Boolean exerciseComplete;
     
