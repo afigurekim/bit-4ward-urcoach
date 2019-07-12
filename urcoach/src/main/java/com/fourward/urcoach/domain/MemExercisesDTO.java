@@ -17,6 +17,6 @@ public class MemExercisesDTO {
 
     private String memExerciseDate, memExerciseCal, memExerciseTime;
 
-    private Boolean exerciseComplete;
+    private Boolean memExerciseComplete;
     
 }
