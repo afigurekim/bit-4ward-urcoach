@@ -4,9 +4,13 @@ spring:
             prefix: /
             suffix: .html
     datasource:
-        driver-class-name: org.mariadb.jdbc.Driver
-        url: jdbc:mariadb://localhost:3306/mariadb
-        username: mariadb
-        password: mariadb
+        url: jdbc:mariadb://fourwarddb.ciybg9cfktgy.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb
+        driverClassName: org.mariadb.jdbc.Driver
+        username: fourwarddb
+        password: fourwarddb
+    jpa:
+        hibernate:
+            ddl-auto: create
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 server:
     port: 9000
