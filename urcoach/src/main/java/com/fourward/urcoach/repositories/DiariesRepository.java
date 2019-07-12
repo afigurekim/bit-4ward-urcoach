@@ -1,15 +1,15 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Member;
+import com.fourward.urcoach.entities.Diaries;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * MemberRepository
+ * DiaryRepository
  */
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long>{
+public interface DiariesRepository extends JpaRepository<Diaries, Long> {
 
     
 }

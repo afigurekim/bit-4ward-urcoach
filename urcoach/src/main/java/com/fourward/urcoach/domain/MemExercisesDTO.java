@@ -1,7 +1,5 @@
 package com.fourward.urcoach.domain;
 
-import java.util.Date;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +11,11 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class MemExerciseDTO {
+public class MemExercisesDTO {
 
-    private Long memExerciseId, memberId, exerciseCal, exerciseTime;
-    
-    private String exerciseName;
+    private Long memExerciseId;
 
-    private Date exerciseDate;
+    private String memExerciseDate, memExerciseCal, memExerciseTime;
 
     private Boolean exerciseComplete;
     

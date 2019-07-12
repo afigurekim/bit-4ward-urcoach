@@ -1,15 +1,15 @@
 package com.fourward.urcoach.repositories;
 
-import com.fourward.urcoach.entities.Exercise;
+import com.fourward.urcoach.entities.Reports;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * ExerciseRepository
+ * ReportRepository
  */
 @Repository
-public interface ExerciseRepository extends JpaRepository<Exercise, Long>{
+public interface ReportsRepository extends JpaRepository<Reports, Long>{
 
     
 }

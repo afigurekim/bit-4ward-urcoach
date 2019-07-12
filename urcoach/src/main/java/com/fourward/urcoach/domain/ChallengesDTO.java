@@ -12,9 +12,9 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class ChallengeDTO {
+public class ChallengesDTO {
 
-    private Long challengeId, memberId;
+    private Long challengeId;
     private String challengeName, ChallengeText, ChallengePhoto;
     
 }

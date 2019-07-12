@@ -10,10 +10,12 @@ import lombok.Data;
  */
 
 @Data @Component @Lazy
-public class GymDTO {
+public class GymsDTO {
    
+    private Long gymId;
     private String  gymName,
                     gymInfo,
                     gymTime,
-                    gymLoc;
+                    gymLoc,
+                    gymPhoto;
 }

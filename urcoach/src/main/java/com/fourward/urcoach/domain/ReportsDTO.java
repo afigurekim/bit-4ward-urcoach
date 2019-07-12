@@ -1,20 +1,19 @@
 package com.fourward.urcoach.domain;
 
 import org.springframework.context.annotation.Lazy;
-
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 /**
- * memberDTO
+ * ReportDTO
  */
 @Data
 @Component
 @Lazy
-public class MemberDTO {
+public class ReportsDTO {
 
-    private Long memberId, memberType;
-    private String memberEmail, memberName, memberHeight, memberWeight, memberPhoto;
+    private Long reportId;
+    private String reportDate, reportCalOut, reportCalIn;
     
 }

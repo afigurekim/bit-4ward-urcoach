@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 @Component
 @Lazy
-public class ExerciseDTO {
+public class ExercisesDTO {
 
-    private Long exerciseId, challengeId;
-    private String exercise_name, exercise_set, exercise_count, exercise_video, exercise_text, exerciseCal, exerciseMinute;
+    private Long exerciseId;
+    private String exerciseName, exerciseSet, exerciseCount, exerciseVideo, exerciseText, exerciseCal;
     
 }
