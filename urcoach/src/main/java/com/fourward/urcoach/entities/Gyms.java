@@ -1,5 +1,7 @@
 package com.fourward.urcoach.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table(name = "gyms")
-public class Gyms {
+public class Gyms implements Serializable{
+  
+  private static final long serialVersionUID = 1L;
   
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

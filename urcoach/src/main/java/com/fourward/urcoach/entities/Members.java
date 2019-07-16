@@ -12,14 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -30,8 +29,9 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
-@Table(name = "Members")
+@Table(name = "members")
 public class Members implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -39,32 +39,27 @@ public class Members implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id") private Long memberId;
-    @Column(name = "member_type") private Integer memberType;
-    @Column(name = "member_email") private String memberEmail;
-    @Column(name = "member_pw") private String memberPw;
-    @Column(name = "member_name") private String memberName;
+    @Column(name = "member_type", nullable = false) private Integer memberType;
+    @Column(name = "member_email", nullable = false, unique = true) private String memberEmail;
+    @Column(name = "member_pw", nullable = false)private String memberPw;
+    @Column(name = "member_name", nullable = false) private String memberName;
     @Column(name = "member_height") private String memberHeight;
     @Column(name = "member_weight") private String memberWeight;
     @Column(name = "member_photo") private String memberPhoto;
     
     @OneToMany(mappedBy = "members")
-    @Cascade(CascadeType.DELETE)
     private List<Reports> reports = new ArrayList<>();
 
     @OneToMany(mappedBy = "members")
-    @Cascade(CascadeType.DELETE)
     private List<Meals> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "members")
-    @Cascade(CascadeType.DELETE)
     private List<Diaries> diaries = new ArrayList<>();
 
     @OneToMany(mappedBy = "members")
-    @Cascade(CascadeType.DELETE)
     private List<Coaches> coaches = new ArrayList<>();
   
     @OneToMany(mappedBy = "members")
-    @Cascade(CascadeType.DELETE)
     private List<MemExercises> memExercises = new ArrayList<>();
     
     @Builder

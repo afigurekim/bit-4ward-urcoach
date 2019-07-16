@@ -10,11 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -37,14 +37,16 @@ public class Challenges implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "challenge_id") Long challengeId;
-    @Column(name = "challenge_name") private String challengeName;
+    @Column(name = "challenge_name", nullable = false, unique = true) private String challengeName;
     @Column(name = "challenge_text") private String challengeText;
     @Column(name = "challenge_photo") private String challengePhoto;
+    
+    @ManyToOne
+    @JoinColumn(name = "coach_id") private Coaches coaches; 
 
     @OneToMany(mappedBy = "challenges", orphanRemoval = true , fetch = FetchType.LAZY)
-    @Cascade(CascadeType.DELETE)
     private List<Exercises> Exercises = new ArrayList<>();
 
     @Builder
