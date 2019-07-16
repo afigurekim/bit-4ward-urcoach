@@ -3,8 +3,18 @@ package com.fourward.urcoach.entities;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
@@ -24,12 +34,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Table (name = "Coaches")
+@Table (name = "coaches")
 public class Coaches implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coach_id") private Long coachId;
 
     @Column(name="coach_loc") private String coachLoc;
@@ -37,11 +47,14 @@ public class Coaches implements Serializable {
     @Column(name="coach_link") private String coachLink;
     @Column(name="coach_photo") private String coachPhoto;
     @Column(name="coach_name") private String coachName;
-    @Column(name="coach_resume_1") private String coachResume1;
-    @Column(name="coach_resume_2") private String coachResume2;
-    @Column(name="coach_resume_3") private String coachResume3;
-    @Column(name="coach_resume_4") private String coachResume4;
-    @Column(name="coach_resume_5") private String coachResume5;
+    @Column(name="coach_resume1") private String coachResume1;
+    @Column(name="coach_resume2") private String coachResume2;
+    @Column(name="coach_resume3") private String coachResume3;
+    @Column(name="coach_resume4") private String coachResume4;
+    @Column(name="coach_resume5") private String coachResume5;
+
+    @OneToMany(mappedBy = "coaches")
+    private List<Challenges> challenges = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "member_id") private Members members;

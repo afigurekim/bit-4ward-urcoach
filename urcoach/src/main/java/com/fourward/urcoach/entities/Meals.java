@@ -1,5 +1,7 @@
 package com.fourward.urcoach.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,13 +27,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
-@Table(name = "Meals")
-public class Meals {
+@Table(name = "meals")
+public class Meals implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "meal_id") private Long mealId;
     @Column(name = "meal_date") private String mealDate;
     @Column(name = "meal_time") private String mealTime;
@@ -41,7 +43,7 @@ public class Meals {
     @JoinColumn(name = "member_id") private Members members;
 
     @ManyToOne
-    @JoinColumn(name = "food_name") private Foods foods;
+    @JoinColumn(name = "food_id") private Foods foods;
 
     @Builder
     private Meals(String mealDate, String mealTime, String mealCal){
