@@ -1,5 +1,6 @@
 package com.fourward.urcoach.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -30,18 +29,17 @@ import lombok.ToString;
 @Getter
 @ToString
 @Table(name = "foods")
-public class Foods {
+public class Foods implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_id") private Long foodId;
-    @Column(name = "food_name") private String foodName;
+    @Column(name = "food_name", unique = true, nullable = false) private String foodName;
     @Column(name = "food_cal") private String foodCal;
 
     @OneToMany(mappedBy = "foods")
-    @Cascade(CascadeType.DELETE)
     private List<Meals> meals = new ArrayList<>();
 
     @Builder

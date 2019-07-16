@@ -1,5 +1,7 @@
 package com.fourward.urcoach.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,13 +28,13 @@ import lombok.ToString;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Table(name = "Reports")
-public class Reports {
+@Table(name = "reports")
+public class Reports implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_id") private Long reportId;
     @Column(name = "report_date") private String reportDate;
     @Column(name = "report_cal_out") private String reportCalOut;
