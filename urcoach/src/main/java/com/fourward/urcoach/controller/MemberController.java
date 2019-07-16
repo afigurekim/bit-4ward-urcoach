@@ -72,9 +72,9 @@ public class MemberController {
         HashMap<String ,String> map = new HashMap<>();
 
         // 아이디 찾고 --> 해당 정보 수정
-        repo.findById((id)).get();
-        System.out.println(repo.findById((id)).get());
-
+        members = repo.findById((id)).get();
+    //    if(members != members.to)
+        
 
 
         map.put("result", "update success");
