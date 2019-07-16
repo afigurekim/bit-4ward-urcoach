@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.MembersRepository;
@@ -66,18 +67,17 @@ public class MemberController {
 
     // 회원 정보 수정
     @PutMapping("/update/{id}")
+    @Transactional
     public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
         HashMap<String ,String> map = new HashMap<>();
 
+        // 아이디 찾고 --> 해당 정보 수정
         repo.findById((id)).get();
-        members.setMemberEmail(members.getMemberEmail());
-        members.setMemberPw(members.getMemberPw());
-        members.setMemberType(members.getMemberType());
-        members.setMemberName(members.getMemberName());
+        System.out.println(repo.findById((id)).get());
 
-        repo.save(members);
+
+
         map.put("result", "update success");
-
         return map;
     }
     

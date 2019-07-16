@@ -46,6 +46,7 @@ public class Members implements Serializable{
     @Column(name = "member_height") private String memberHeight;
     @Column(name = "member_weight") private String memberWeight;
     @Column(name = "member_photo") private String memberPhoto;
+    @Column(name = "member_text") private String memberText;
     
     @OneToMany(mappedBy = "members")
     private List<Reports> reports = new ArrayList<>();
@@ -63,7 +64,8 @@ public class Members implements Serializable{
     private List<MemExercises> memExercises = new ArrayList<>();
     
     @Builder
-    private Members(String memberEmail, String memberPw, Integer memberType, String memberName, String memberHeight, String memberWeight, String memberPhoto){
+    private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 
+                    String memberHeight, String memberWeight, String memberPhoto, String memberText){
 
         this.memberEmail = memberEmail;
         this.memberPw = memberPw;
@@ -72,5 +74,6 @@ public class Members implements Serializable{
         this.memberHeight = memberHeight;
         this.memberWeight = memberWeight;
         this.memberPhoto = memberPhoto;
+        this.memberText = memberText;
     }
 }
