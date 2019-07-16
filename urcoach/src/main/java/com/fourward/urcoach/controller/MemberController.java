@@ -66,20 +66,20 @@ public class MemberController {
     }
 
     // 회원 정보 수정
-    @PutMapping("/update/{id}")
-    @Transactional
-    public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
-        HashMap<String ,String> map = new HashMap<>();
+    // @PutMapping("/update/{id}")
+    // @Transactional
+    // public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
+    //     HashMap<String ,String> map = new HashMap<>();
 
-        // 아이디 찾고 --> 해당 정보 수정
-        members = repo.findById((id)).get();
-    //    if(members != members.to)
+    //     // 아이디 찾고 --> 해당 정보 수정
+    //     members = repo.findById((id)).get();
+    // //    if(members != members.to)
         
 
 
-        map.put("result", "update success");
-        return map;
-    }
+    //     map.put("result", "update success");
+    //     return map;
+    // }
     
 
 
