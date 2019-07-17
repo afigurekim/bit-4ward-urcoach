@@ -75,8 +75,6 @@ public class MemberController {
     //     members = repo.findById((id)).get();
     // //    if(members != members.to)
         
-
-
     //     map.put("result", "update success");
     //     return map;
     // }
