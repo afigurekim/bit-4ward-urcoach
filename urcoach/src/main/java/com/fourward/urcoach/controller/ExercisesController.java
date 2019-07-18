@@ -2,9 +2,7 @@ package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
 
-import com.fourward.urcoach.entities.Challenges;
 import com.fourward.urcoach.entities.Exercises;
-import com.fourward.urcoach.repositories.ChallengesRepository;
 import com.fourward.urcoach.repositories.ExercisesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExercisesController {
 
     @Autowired private ExercisesRepository exRepo;
-    @Autowired private ChallengesRepository chRepo;
 
     //운동 루틴 데이터 입력
     @PostMapping("/input")

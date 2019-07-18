@@ -7,7 +7,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import com.fourward.urcoach.entities.Members;
-import com.fourward.urcoach.repositories.CoachesRepository;
 import com.fourward.urcoach.repositories.MembersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

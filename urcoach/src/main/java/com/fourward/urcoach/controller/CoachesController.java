@@ -5,7 +5,6 @@ import java.util.HashMap;
 import com.fourward.urcoach.entities.Coaches;
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.CoachesRepository;
-import com.fourward.urcoach.repositories.MembersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoachesController {
 
     @Autowired private CoachesRepository coaRepo;
-    @Autowired private MembersRepository memRepo;
-    @Autowired private Members members;
 
     @PostMapping("/insert")
     public HashMap<String ,String> insertCoach(@RequestBody Coaches coaches,
