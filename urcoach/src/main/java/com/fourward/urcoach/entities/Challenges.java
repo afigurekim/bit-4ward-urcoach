@@ -21,6 +21,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -30,6 +31,7 @@ import lombok.ToString;
 @Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
 @Table(name = "challenges")
 public class Challenges implements Serializable{
@@ -44,9 +46,9 @@ public class Challenges implements Serializable{
     @Column(name = "challenge_photo") private String challengePhoto;
     
     @ManyToOne
-    @JoinColumn(name = "coach_id") private Coaches coaches; 
+    @JoinColumn(name = "coach_id") private Coaches coachId; 
 
-    @OneToMany(mappedBy = "challenges", orphanRemoval = true , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "challengeId", orphanRemoval = true , fetch = FetchType.LAZY)
     private List<Exercises> Exercises = new ArrayList<>();
 
     @Builder
