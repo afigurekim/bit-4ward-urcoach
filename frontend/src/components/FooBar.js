@@ -46,7 +46,7 @@ function FooBar() {
                 <Box tag="li" pad="small" direction="row" justify="between">
                   <Heading level="4" size="small">
                     챌린지
-                            </Heading>
+                  </Heading>
                 </Box>
                 <Box tag="li" pad="small" direction="row" justify="between">
                   <Text><FootA href="#">챌린지 목록</FootA></Text>
@@ -72,7 +72,7 @@ function FooBar() {
                 <Box tag="li" pad="small" direction="row" justify="between">
                   <Heading level="4" size="small">
                     매칭
-                            </Heading>
+                  </Heading>
                 </Box>
                 <Box tag="li" pad="small" direction="row" justify="between">
                   <Text><FootA href="#">코치 추천</FootA></Text>
