@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as BRouter, Route } from 'react-router-dom';
+import { BrowserRouter as BRouter, Route} from 'react-router-dom';
 import {
   Box,
   Button,
@@ -13,6 +13,10 @@ import {
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
 import Main from '../components/Main';
+import SignUp from './SignUp';
+import Login from './Login';
+import ChallengeList from './ChallengeList';
+
 
 const HeadBar = (props) => (
   <Box
@@ -30,6 +34,7 @@ const HeadBar = (props) => (
 
 const MenuA = (props) => {
   return(
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
     <a 
       style={{ all: "inherit" }}
       {...props}
@@ -56,7 +61,7 @@ class NavBar extends Component {
                 <Box fill="horizontal" justify="evenly" direction="row">
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
-                      { label: "챌린지 목록", href: "#" },
+                      { label: "챌린지 목록", href: "/ChallengeList" },
                       { label: "내 챌린지", href: "#" }
                     ]}>
                       {({ drop, hover }) => {
@@ -100,8 +105,8 @@ class NavBar extends Component {
                     </Menu>
                   </Box>
                   <Box direction="row" align="center" gap="small" pad="xsmall">
-                    <Button primary color="#00acea" label="로그인" onClick={() => { }} />
-                    <Button primary color="#fedb41" label="회원가입" onClick={() => { }} />
+                    <Button primary color="#00acea" label="로그인" href="/login"/>
+                    <Button primary color="#fedb41" label="회원가입" href="/signup" />
                   </Box>
                 </Box>
               ) : (
@@ -118,8 +123,8 @@ class NavBar extends Component {
                               <Image src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
                             </a>
                             <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
-                              <Button primary color="#00acea" label="로그인" onClick={() => { }} />
-                              <Button primary color="#fedb41" label="회원가입" onClick={() => { }} />
+                              <Button primary color="#00acea" label="로그인" href="/login" />
+                              <Button primary color="#fedb41" label="회원가입" href="/signup"/>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
@@ -128,7 +133,7 @@ class NavBar extends Component {
                                         </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">챌린지 목록</MenuA></Text>
+                                <Text><MenuA href="/ChallengeList">챌린지 목록</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="#">내 챌린지</MenuA></Text>
@@ -138,7 +143,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   분석
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="#">데일리 리포트</MenuA></Text>
@@ -151,7 +156,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   매칭
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="#">코치 추천</MenuA></Text>
@@ -168,6 +173,9 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <Route path="/challengelist" component={ChallengeList} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>

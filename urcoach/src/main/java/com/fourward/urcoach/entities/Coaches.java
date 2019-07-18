@@ -53,11 +53,11 @@ public class Coaches implements Serializable {
     @Column(name="coach_resume4") private String coachResume4;
     @Column(name="coach_resume5") private String coachResume5;
 
-    @OneToMany(mappedBy = "coaches")
+    @OneToMany(mappedBy = "coachId")
     private List<Challenges> challenges = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members members;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @Builder
     public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto, String coachName,

@@ -20,6 +20,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -29,6 +30,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
 @Table(name = "exercises")
 public class Exercises implements Serializable{
@@ -45,12 +47,12 @@ public class Exercises implements Serializable{
     @Column(name = "exercise_text") private String exerciseText;
     @Column(name = "exercise_cal") private String exerciseCal;
 
-    @OneToMany(mappedBy = "exercises")
+    @OneToMany(mappedBy = "exerciseId")
     private List<MemExercises> memExercises = new ArrayList<>(); 
 
     @ManyToOne
     @JoinColumn(name = "challenge_id")
-    private Challenges challenges;
+    private Challenges challengeId;
 
     @Builder
     private Exercises(String exerciseName, String exerciseSet, String exerciseCount, String exerciseVideo, String exerciseText,

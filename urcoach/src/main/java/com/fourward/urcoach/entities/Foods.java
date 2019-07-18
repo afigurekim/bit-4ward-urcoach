@@ -18,6 +18,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -27,6 +28,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
 @Table(name = "foods")
 public class Foods implements Serializable{
@@ -39,7 +41,7 @@ public class Foods implements Serializable{
     @Column(name = "food_name", unique = true, nullable = false) private String foodName;
     @Column(name = "food_cal") private String foodCal;
 
-    @OneToMany(mappedBy = "foods")
+    @OneToMany(mappedBy = "foodId")
     private List<Meals> meals = new ArrayList<>();
 
     @Builder

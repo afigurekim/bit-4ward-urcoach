@@ -17,6 +17,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -27,6 +28,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @Table(name = "meals")
 public class Meals implements Serializable{
 
@@ -40,10 +42,10 @@ public class Meals implements Serializable{
     @Column(name = "meal_cal") private String mealCal;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members members;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @ManyToOne
-    @JoinColumn(name = "food_id") private Foods foods;
+    @JoinColumn(name = "food_id") private Foods foodId;
 
     @Builder
     private Meals(String mealDate, String mealTime, String mealCal){
