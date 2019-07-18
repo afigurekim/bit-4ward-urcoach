@@ -1,16 +1,17 @@
 package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import com.fourward.urcoach.entities.Members;
-import com.fourward.urcoach.repositories.CoachesRepository;
 import com.fourward.urcoach.repositories.MembersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,6 +74,7 @@ public class MembersController {
         oldMembers.setMemberPw(members.getMemberPw());
         oldMembers.setMemberHeight(members.getMemberHeight());
         oldMembers.setMemberPhoto(members.getMemberPhoto());
+        //not null값은 입력해야됨
         oldMembers.setMemberType(members.getMemberType());
         oldMembers.setMemberWeight(members.getMemberWeight());
         oldMembers.setMemberText(members.getMemberText());
@@ -80,6 +82,17 @@ public class MembersController {
         memRepo.save(oldMembers);
     
         map.put("result", "update success");
+        return map;
+    }
+    
+    // 회원 정보 삭제
+    @DeleteMapping("/delete/{id}")
+    public HashMap<String, String> deleteMember(@PathVariable Long id){
+        HashMap<String ,String > map = new HashMap<>();
+
+        memRepo.deleteById(id);
+    
+        map.put("result", "member delete success");
         return map;
     }
     

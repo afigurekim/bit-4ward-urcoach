@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,7 +58,7 @@ public class Members implements Serializable{
     @OneToMany(mappedBy = "memberId")
     private List<Diaries> diaries = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
     private List<Coaches> coaches = new ArrayList<>();
   
     @OneToMany(mappedBy = "memberId")
