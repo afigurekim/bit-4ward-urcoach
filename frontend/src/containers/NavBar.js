@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as BRouter, Route } from 'react-router-dom';
+import { BrowserRouter as BRouter, Route} from 'react-router-dom';
 import {
   Box,
   Button,
@@ -13,6 +13,8 @@ import {
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
 import Main from '../components/Main';
+import CoachMatching from './CoachMatching';
+
 
 const HeadBar = (props) => (
   <Box
@@ -86,7 +88,7 @@ class NavBar extends Component {
                   </Box>
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
-                      { label: "코치 추천", href: "#" },
+                      { label: "코치 추천", href: "/coach" },
                       { label: "휘트니스 추천", href: "#" }
                     ]}>
                       {({ drop, hover }) => {
@@ -125,7 +127,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   챌린지
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="#">챌린지 목록</MenuA></Text>
@@ -138,7 +140,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   분석
-                                        </Heading>
+                               </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="#">데일리 리포트</MenuA></Text>
@@ -151,13 +153,13 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   매칭
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">코치 추천</MenuA></Text>
+                                <Text> <MenuA href="/coach">코치추천</MenuA></Text>
                               </Box>
-                              <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">휘트니스 추천</MenuA></Text>
+                              <Box tag="li" pad="small" direction="row" justify="between">                                                         
+                                  <Text><MenuA href="/">휘트니스 추천</MenuA></Text> 
                               </Box>
                             </Box>
                           </Box>
@@ -168,6 +170,7 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
+          <Route path="/coach" exact component={ CoachMatching } />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
