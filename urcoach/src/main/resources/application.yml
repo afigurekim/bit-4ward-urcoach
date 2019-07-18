@@ -4,14 +4,14 @@ spring:
             prefix: /
             suffix: .html
     datasource:
-        # url: jdbc:mariadb://localhost:3306/fourwarddblocal
-        # driverClassName: org.mariadb.jdbc.Driver
-        # username: fourwarddbyong
-        # password: 1234
-        url: jdbc:mariadb://fourwarddb.cowfpof74cuw.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb?userUnicode=true&characterEncoding=UTF-8
-        username: fourwarddb
-        password: fourwarddb
-        sql-script-encoding: UTF-8
+        url: jdbc:mariadb://localhost:3306/mariadb
+        driverClassName: org.mariadb.jdbc.Driver
+        username: mariadb
+        password: mariadb
+        # url: jdbc:mariadb://fourwarddb.ciybg9cfktgy.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb?userUnicode=true&characterEncoding=UTF-8
+        # username: fourwarddb
+        # password: fourwarddb
+        # sql-script-encoding: UTF-8
     jpa:
         # show-sql: true
         # open-in-view: false

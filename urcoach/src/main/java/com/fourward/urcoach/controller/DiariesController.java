@@ -1,0 +1,56 @@
+package com.fourward.urcoach.controller;
+
+import java.util.HashMap;
+
+import com.fourward.urcoach.entities.Diaries;
+import com.fourward.urcoach.repositories.DiariesRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * DiariesController
+ */
+@RestController
+@RequestMapping("/diary")
+public class DiariesController {
+
+    @Autowired private DiariesRepository repo;
+
+    @PostMapping("")
+    public HashMap<String, String> postDiary(@RequestBody Diaries diaries){
+        HashMap<String, String> map = new HashMap<>();
+        repo.save(diaries);
+        map.put("result", "다이어리 등록 성공");
+        return map;
+    }
+
+    @GetMapping("/exists/{diaryDate}")
+    public String existsByDiaryDate(@PathVariable String diaryDate){
+        String exist = "DayNew";
+        if(repo.existsByDiaryDate(diaryDate)){
+            exist = "DayView";
+        };
+        return exist;
+    }
+
+    @GetMapping("/find/{diaryDate}")
+    public Diaries findByDiaryDate(@PathVariable String diaryDate){
+        return repo.findByDiaryDate(diaryDate);
+    }
+
+    @PutMapping("/update/{diaryDate}")
+    public HashMap<String, String> updateDiary(@PathVariable String diaryDate, @RequestBody Diaries diaries){
+        HashMap<String, String> map = new HashMap<>();
+        
+        repo.save(diaries);
+        map.put("result", "다이어리 수정 성공");
+        return map;
+    }
+}

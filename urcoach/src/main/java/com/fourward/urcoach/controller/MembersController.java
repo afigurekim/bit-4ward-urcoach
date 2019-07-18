@@ -23,20 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/member")
-public class MemberController {
+public class MembersController {
 
     @Autowired private MembersRepository repo;
 
     //회원가입 local
     @PostMapping("/signup")
-    public HashMap<String, String> singUp(@RequestBody Members members){
+    public HashMap<String, String> signUp(@RequestBody Members members){
         HashMap<String ,String> map = new HashMap<>();
-
-        members.setMemberEmail(members.getMemberEmail());
-        members.setMemberPw(members.getMemberPw());
-        members.setMemberType(members.getMemberType());
-        members.setMemberName(members.getMemberName());
-
         repo.save(members);
         map.put("result","회원가입 성공");
         return map;
