@@ -59,6 +59,7 @@ class CoachMatching extends Component {
                     <Box height="small" width='40' border>
                     </Box>
                 </Grid>
+
                 <br/>
                 <Grid columns={{count: 3, size: "auto"}} gap="large">
                     <Box height="medium" width='60' border>
