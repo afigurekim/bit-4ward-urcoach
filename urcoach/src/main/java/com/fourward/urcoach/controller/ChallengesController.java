@@ -1,18 +1,16 @@
 package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.fourward.urcoach.entities.Challenges;
-import com.fourward.urcoach.entities.Exercises;
 import com.fourward.urcoach.repositories.ChallengesRepository;
-import com.fourward.urcoach.repositories.CoachesRepository;
-import com.fourward.urcoach.repositories.ExercisesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,12 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChallengesController {
     
     @Autowired private ChallengesRepository chRepo;
-    @Autowired private CoachesRepository coachRepo;
 
     //챌린지 이름 내용 넣기
     @PostMapping("/insert")
-    public HashMap<String ,String > inputChallenge(@RequestBody Challenges challenges,
-                                                    @RequestParam("coachId") long coachId){
+    public HashMap<String ,String > inputChallenge(@RequestBody Challenges challenges){
 
         HashMap <String ,String > map = new HashMap<>();                          
         
@@ -37,5 +33,12 @@ public class ChallengesController {
         
         map.put("result" ,"Challenge inputSuccess");
         return map;
+    }
+
+    //selectAll
+    @GetMapping("/selectAll")
+    public List<Challenges> selectChallenges(){
+
+        return chRepo.findAll();
     }
 }

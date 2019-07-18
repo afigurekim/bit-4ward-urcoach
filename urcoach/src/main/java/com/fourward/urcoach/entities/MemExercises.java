@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -49,6 +51,7 @@ public class MemExercises implements Serializable{
     @JoinColumn(name = "member_id") private Members memberId;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "exercise_id") private Exercises exerciseId;
    
     @Builder
