@@ -17,6 +17,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -27,6 +28,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
 @Table(name = "mem_exercises")
 public class MemExercises implements Serializable{
@@ -44,10 +46,10 @@ public class MemExercises implements Serializable{
     @Column(name = "mem_exercise_count") private String memExerciseCount;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members members;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @ManyToOne
-    @JoinColumn(name = "exercise_id") private Exercises exercises;
+    @JoinColumn(name = "exercise_id") private Exercises exerciseId;
    
     @Builder
     private MemExercises(String memExerciseDate, Boolean memExerciseComplete, String memExerciseTime, String memExerciseCal,

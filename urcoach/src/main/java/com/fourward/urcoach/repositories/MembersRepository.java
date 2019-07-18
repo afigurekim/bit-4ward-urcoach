@@ -1,6 +1,8 @@
 package com.fourward.urcoach.repositories;
 
 
+import java.util.Optional;
+
 import com.fourward.urcoach.entities.Members;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +24,5 @@ public interface MembersRepository extends JpaRepository<Members, Long> {
     // @Query("update members set member_name = :memberName, member_pw = :memberPw WHERE member_email= :memberEmail")
     // public Members updateMember(Long id, Members members );
 
+    
 }

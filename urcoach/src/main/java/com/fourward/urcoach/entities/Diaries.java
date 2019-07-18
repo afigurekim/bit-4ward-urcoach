@@ -17,6 +17,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -26,6 +27,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
+@Setter
 @ToString
 @Table(name = "diaries")
 public class Diaries implements Serializable{
@@ -46,7 +48,7 @@ public class Diaries implements Serializable{
     @Column(name = "diary_comment") private String diaryComment;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") private Members members;
+    @JoinColumn(name = "member_id") private Members memberId;
 
     @Builder
     private Diaries(String diaryDate, String diaryPhoto, String diaryDays, String diaryGoal, 

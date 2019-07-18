@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import com.fourward.urcoach.entities.Members;
+import com.fourward.urcoach.repositories.CoachesRepository;
 import com.fourward.urcoach.repositories.MembersRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,21 +24,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/member")
-public class MemberController {
+public class MembersController {
 
-    @Autowired private MembersRepository repo;
+    @Autowired private MembersRepository memRepo;
 
-    //회원가입 local
+    //member회원가입 local
     @PostMapping("/signup")
     public HashMap<String, String> singUp(@RequestBody Members members){
         HashMap<String ,String> map = new HashMap<>();
 
-        members.setMemberEmail(members.getMemberEmail());
-        members.setMemberPw(members.getMemberPw());
-        members.setMemberType(members.getMemberType());
-        members.setMemberName(members.getMemberName());
-
-        repo.save(members);
+        memRepo.save(members);
         map.put("result","회원가입 성공");
         return map;
     }
@@ -48,7 +44,7 @@ public class MemberController {
         System.out.println("로그인 컨트롤러 : " + members.getMemberEmail() + members.getMemberPw());
 
         Supplier<Members> fx = (() -> {
-            return repo.findByMemberEmailAndMemberPw(members.getMemberEmail(), members.getMemberPw());
+            return memRepo.findByMemberEmailAndMemberPw(members.getMemberEmail(), members.getMemberPw());
         });
         System.out.println("로그인 확인 :" + (Members)fx.get());
         return (Members) fx.get();
@@ -59,27 +55,36 @@ public class MemberController {
     public Members findById(@PathVariable Long id){
         System.out.println("findById " + id);
 
-        Members members = repo.findById(id)
+        Members members = memRepo.findById(id)
                                 .orElseThrow(EntityNotFoundException::new);
         System.out.println("id 회원정보 : "+ members);
         return members;
     }
 
     // 회원 정보 수정
-    // @PutMapping("/update/{id}")
-    // @Transactional
-    // public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
-    //     HashMap<String ,String> map = new HashMap<>();
+    @PutMapping("/update/{id}")
+    @Transactional
+    public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
+        HashMap<String ,String> map = new HashMap<>();
 
-    //     // 아이디 찾고 --> 해당 정보 수정
-    //     members = repo.findById((id)).get();
-    // //    if(members != members.to)
+        // 아이디 찾고 --> 해당 정보 수정
+        Members oldMembers = memRepo.findById((id)).get();
+        oldMembers.setMemberName(members.getMemberName());
+        oldMembers.setMemberPw(members.getMemberPw());
+        oldMembers.setMemberHeight(members.getMemberHeight());
+        oldMembers.setMemberPhoto(members.getMemberPhoto());
+        oldMembers.setMemberType(members.getMemberType());
+        oldMembers.setMemberWeight(members.getMemberWeight());
+        oldMembers.setMemberText(members.getMemberText());
         
-    //     map.put("result", "update success");
-    //     return map;
-    // }
+        memRepo.save(oldMembers);
+    
+        map.put("result", "update success");
+        return map;
+    }
     
 
+    
 
 
 

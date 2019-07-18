@@ -4,7 +4,8 @@ spring:
             prefix: /
             suffix: .html
     datasource:
-        url: jdbc:mariadb://fourwarddb.ciybg9cfktgy.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb?userUnicode=true&characterEncoding=UTF-8
+    # 내꺼 url
+        url: jdbc:mariadb://fourwarddb.cowfpof74cuw.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb?userUnicode=true&characterEncoding=UTF-8
         username: fourwarddb
         password: fourwarddb
         sql-script-encoding: UTF-8

@@ -48,19 +48,19 @@ public class Members implements Serializable{
     @Column(name = "member_photo") private String memberPhoto;
     @Column(name = "member_text") private String memberText;
     
-    @OneToMany(mappedBy = "members")
+    @OneToMany(mappedBy = "memberId")
     private List<Reports> reports = new ArrayList<>();
 
-    @OneToMany(mappedBy = "members")
+    @OneToMany(mappedBy = "memberId")
     private List<Meals> meals = new ArrayList<>();
 
-    @OneToMany(mappedBy = "members")
+    @OneToMany(mappedBy = "memberId")
     private List<Diaries> diaries = new ArrayList<>();
 
-    @OneToMany(mappedBy = "members")
+    @OneToMany(mappedBy = "memberId")
     private List<Coaches> coaches = new ArrayList<>();
   
-    @OneToMany(mappedBy = "members")
+    @OneToMany(mappedBy = "memberId")
     private List<MemExercises> memExercises = new ArrayList<>();
     
     @Builder
