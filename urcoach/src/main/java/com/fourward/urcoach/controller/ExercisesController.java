@@ -25,7 +25,7 @@ public class ExercisesController {
     @Autowired private ExercisesRepository exRepo;
 
     //운동 루틴 데이터 입력
-    @PostMapping("/input")
+    @PostMapping("/insert")
     public HashMap<String,String> insertExercise(@RequestBody Exercises exercises,
                                                 @RequestParam ("challengeId") Challenges challengeId){
 
