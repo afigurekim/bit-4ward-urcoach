@@ -48,14 +48,14 @@ public class CoachesController {
     }
 
     //R(2)
-    @GetMapping()
-    public Iterable<Coaches> findAll(){
-        Iterable<Coaches> entities = repo.findAll();
+    // @GetMapping()
+    // public Iterable<Coaches> findAll(){
+    //     Iterable<Coaches> entities = repo.findAll();
 
-        List<Coaches> list = new ArrayList<>();
-        return list;
+    //     List<Coaches> list = new ArrayList<>();
+    //     return list;
 
-    }
+    // }
 
 
 

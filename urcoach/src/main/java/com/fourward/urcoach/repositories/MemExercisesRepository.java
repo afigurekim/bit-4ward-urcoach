@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemExercisesRepository extends JpaRepository<MemExercises, Long> {
     
+    public Iterable<MemExercises> findByMemExerciseDate(String memExerciseDate);
 }

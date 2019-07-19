@@ -105,8 +105,8 @@ class NavBar extends Component {
                     </Menu>
                   </Box>
                   <Box direction="row" align="center" gap="small" pad="xsmall">
-                    <Button primary color="#00acea" label="로그인" href="/login"/>
-                    <Button primary color="#fedb41" label="회원가입" href="/signup" />
+                    <Button primary color="dark-2" label="로그인" href="/login"/>
+                    <Button primary color="light-2" label="회원가입" href="/signup" />
                   </Box>
                 </Box>
               ) : (
@@ -123,8 +123,8 @@ class NavBar extends Component {
                               <Image src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
                             </a>
                             <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
-                              <Button primary color="#00acea" label="로그인" href="/login" />
-                              <Button primary color="#fedb41" label="회원가입" href="/signup"/>
+                              <Button primary color="dark-2" label="로그인" href="/login" />
+                              <Button primary color="light-2" label="회원가입" href="/signup"/>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
