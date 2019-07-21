@@ -19,18 +19,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
  * HomeController
  */
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/members")
 public class MembersController {
 
     @Autowired private MembersRepository memRepo;
 
     //member회원가입 local
-    @PostMapping("/signup")
-    public HashMap<String, String> singUp(@RequestBody Members members){
+    @PostMapping("/join")
+    public HashMap<String, String> join(@RequestBody Members members){
         HashMap<String ,String> map = new HashMap<>();
 
         memRepo.save(members);
@@ -39,7 +40,7 @@ public class MembersController {
     }
 
     //로그인 하기
-    @PostMapping("/find")
+    @PostMapping("/login")
     public Members login(@RequestBody Members members){
         System.out.println("로그인 컨트롤러 : " + members.getMemberEmail() + members.getMemberPw());
 
@@ -94,4 +95,7 @@ public class MembersController {
         map.put("result", "member delete success");
         return map;
     }
+
+
+    
 }

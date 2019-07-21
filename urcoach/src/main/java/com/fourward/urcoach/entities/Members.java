@@ -33,7 +33,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "coaches")
 @Table(name = "members")
 public class Members implements Serializable{
 
@@ -51,20 +51,29 @@ public class Members implements Serializable{
     @Column(name = "member_photo") private String memberPhoto;
     @Column(name = "member_text") private String memberText;
     
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Reports> reports = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Meals> meals = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Diaries> diaries = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Coaches> coaches = new ArrayList<>();
   
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<MemExercises> memExercises = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<MemChallenges> memChallenges = new ArrayList<>();
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 

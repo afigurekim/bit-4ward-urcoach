@@ -13,7 +13,7 @@ import {
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
 import Main from '../components/Main';
-import SignUp from './SignUp';
+import SignUpType from './SignUpType';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
 
@@ -106,7 +106,7 @@ class NavBar extends Component {
                   </Box>
                   <Box direction="row" align="center" gap="small" pad="xsmall">
                     <Button primary color="#00acea" label="로그인" href="/login"/>
-                    <Button primary color="#fedb41" label="회원가입" href="/signup" />
+                    <Button primary color="#fedb41" label="회원가입" href="/SignUpType" />
                   </Box>
                 </Box>
               ) : (
@@ -124,7 +124,7 @@ class NavBar extends Component {
                             </a>
                             <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
                               <Button primary color="#00acea" label="로그인" href="/login" />
-                              <Button primary color="#fedb41" label="회원가입" href="/signup"/>
+                              <Button primary color="#fedb41" label="회원가입" href="/SignUpType"/>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
@@ -173,7 +173,7 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/SignUpType" component={SignUpType} />
           <Route path="/login" component={Login} />
           <Route path="/challengelist" component={ChallengeList} />
           </BRouter>

@@ -42,7 +42,7 @@ public class Exercises implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_id") private Long exerciseId;
-    @Column(name = "exercise_name", unique = true, nullable = false) private String exerciseName;
+    @Column(name = "exercise_name", nullable = false) private String exerciseName;
     @Column(name = "exercise_set") private String exerciseSet;
     @Column(name = "exercise_count") private String exerciseCount;
     @Column(name = "exercise_video") private String exerciseVideo;

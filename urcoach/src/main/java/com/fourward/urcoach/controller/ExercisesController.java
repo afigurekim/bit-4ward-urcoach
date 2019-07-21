@@ -19,34 +19,33 @@ import org.springframework.web.bind.annotation.RestController;
  * ExercisesController
  */
 @RestController
-@RequestMapping("/exercise")
+@RequestMapping("/exercises")
 public class ExercisesController {
 
-    @Autowired private ExercisesRepository exRepo;
+    @Autowired
+    private ExercisesRepository exRepo;
 
-    //운동 루틴 데이터 입력
+    // 운동 루틴 데이터 입력
     @PostMapping("/insert")
-    public HashMap<String,String> insertExercise(@RequestBody Exercises exercises,
-                                                @RequestParam ("challengeId") Challenges challengeId){
+    public HashMap<String, String> insertExercise(@RequestBody Exercises exercises,
+            @RequestParam("challengeId") Challenges challengeId) {
 
-        HashMap<String ,String > map = new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
 
         System.out.println("challengeId : " + challengeId);
-        System.out.println("exercises.getChallengeId : "+ exercises.getChallengeId());
+        System.out.println("exercises.getChallengeId : " + exercises.getChallengeId());
         exercises.setChallengeId(challengeId);
         System.out.println("challengeId : " + exercises.getChallengeId());
         exRepo.save(exercises);
 
-        map.put("result" , "Exercise Success");
+        map.put("result", "Exercise Success");
         return map;
     }
 
-    //운동 포함 다 출력
-    @GetMapping("/selectAll")
-    public List<Exercises> selectExercise(){
+    // 운동 포함 다 출력
+    @GetMapping("/findAll")
+    public List<Exercises> findAllExercise() {
 
         return exRepo.findAll();
     }
-
-    // 
 }
