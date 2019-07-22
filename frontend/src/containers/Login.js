@@ -38,7 +38,7 @@ class Login extends Component {
 
                 <Box direction="row-responsive" justify="center" align="center" pad="xlarge" gap="medium" round margin={{bottom:"5%"}}>
                     {/* 로그인 폼 */}
-                    <Box align="center" pad="large" margin={{bottom:"10%"}}>
+                    <Box align="center" pad="large">
                         <Form>
                             <FormFieldLabel name="email" label="Email"/>
                             <FormFieldLabel name="pasword" label="Password" type="password"/>
@@ -47,9 +47,12 @@ class Login extends Component {
                             </Box>
                         </Form>
                     </Box>
-
+                    {/* 또는 */}
+                    <Box align="center">
+                      <Text> 또는 </Text>
+                    </Box>
                     {/* API를 통한 로그인 */}
-                    <Box>
+                    <Box >
                         <Button label="구글로 로그인" primary margin="medium"></Button>
                         <Button label="카카오톡으로 로그인" primary margin="medium"></Button>
                         <Button label="네이버로 로그인" primary margin="medium"></Button>

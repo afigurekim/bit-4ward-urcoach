@@ -27,6 +27,7 @@
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.87.3",
     "socket.io": "^2.2.0",
     "storybook-react": "^3.2.16",
     "styled-components": "^4.3.2"

@@ -16,7 +16,9 @@ import Main from '../components/Main';
 import SignUpType from './SignUpType';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
+import ExerciseList from './ExerciseList';
 
+// 로그인했을 때 로그인, 회원가입 버튼 --> 로그아웃, 프로필버튼으로 수정 --> 콜백으로 해야함
 
 const HeadBar = (props) => (
   <Box
@@ -176,6 +178,7 @@ class NavBar extends Component {
           <Route path="/SignUpType" component={SignUpType} />
           <Route path="/login" component={Login} />
           <Route path="/challengelist" component={ChallengeList} />
+          <Route path="/exerciselist" component={ExerciseList} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>

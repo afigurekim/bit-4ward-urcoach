@@ -19,7 +19,7 @@ class SignUp extends Component {
               <Box direction="row-responsive" justify="center" align="center" pad="xlarge" gap="medium" round margin={{bottom:"5%"}}>
                 {/* 운동 회원 */}
                 <Box pad="large" align="center" round gap="small" border={{style:"solid", size: "medium", color: "black"}} >
-                <Heading> 운동 회원 </Heading>
+                <Heading size="small"> 운동 회원 </Heading>
                   {/* 운동 회원 간단 설명 */}
                   <Box round gap="small" margin={{bottom:"5%"}} width="medium">
                     <Text textAlign="center">
@@ -32,7 +32,7 @@ class SignUp extends Component {
                 </Box>
                 {/* 코치 회원 */}
                 <Box pad="large" align="center" round gap="small" border={{style: "solid", size: "medium", color: "black"}} >
-                <Heading> 코치 회원 </Heading>
+                <Heading size="small"> 코치 회원 </Heading>
                 {/* 코치 회원 간단 설명 */}
                 <Box round gap="small" margin={{bottom:"5%"}} width="medium">
                   <Text textAlign="center">
