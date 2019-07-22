@@ -17,6 +17,7 @@ import SignUpType from './SignUpType';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
 import ExerciseList from './ExerciseList';
+import MemChallenge from './MemChallenge';
 
 // 로그인했을 때 로그인, 회원가입 버튼 --> 로그아웃, 프로필버튼으로 수정 --> 콜백으로 해야함
 
@@ -64,7 +65,7 @@ class NavBar extends Component {
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
                       { label: "챌린지 목록", href: "/ChallengeList" },
-                      { label: "내 챌린지", href: "#" }
+                      { label: "내 챌린지", href: "/MemChallenge" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -138,7 +139,7 @@ class NavBar extends Component {
                                 <Text><MenuA href="/ChallengeList">챌린지 목록</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">내 챌린지</MenuA></Text>
+                                <Text><MenuA href="/MemChallenge">내 챌린지</MenuA></Text>
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -179,6 +180,7 @@ class NavBar extends Component {
           <Route path="/login" component={Login} />
           <Route path="/challengelist" component={ChallengeList} />
           <Route path="/exerciselist" component={ExerciseList} />
+          <Route path="/MemChallenge" component={MemChallenge} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>

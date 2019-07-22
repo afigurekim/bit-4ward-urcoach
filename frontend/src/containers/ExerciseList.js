@@ -1,73 +1,91 @@
-import React,{Component} from 'react';
-import { Box, Heading, ResponsiveContext,Text } from "grommet";
+import React, { Component } from "react";
+import { Box, Heading, ResponsiveContext, Text, Clock, Button } from "grommet";
 
-class ExerciseList extends Component{
+class ExerciseList extends Component {
   constructor(props) {
-      super(props);
+    super(props);
   }
 
   render() {
-    return(
+    return (
       <ResponsiveContext.Consumer>
-      {size => (
-        <Box direction="row" align="center" justify="center">
-         <Box flex align="center" justify="center" overflow={{ vertical: 'hidden' }}>
-            {/* 헤딩 */}
-            <Heading margin={{ top: "10%", bottom: "5%" }} >운동 루틴</Heading>
-            {/* 카드형식으로 - 넓으면 3개 2개 모바일 1개 */}
-            <Box direction="row-responsive" justify="center" align="center" margin={{bottom:"10%"}}>
-            {/* 웹 창이 작아지면 */}
-            {(size == 'small') ? (
-              <Box direction="row" align="center" border="all" round="small" >  
-                <Box height="small" width="small" margin="small">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/YYFvGbSrP2U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </Box>
-                <Box direction="column" width="medium">
-                  <Box>
-                    
-                  </Box>
-                  <Box>
-                    <Text>피티점프</Text>
-                  </Box>
-                </Box>
-              </Box>
-            ) : (
-              <Box gap="medium" direction="row">
-                <Box direction="row" align="center" border="all" round="small" >  
-                  <Box height="small" width="small" margin="small">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/YYFvGbSrP2U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
-                  </Box>
-                  <Box direction="column" width="medium">
-                    <Box>
-                      
+        {size => (
+          <Box direction="row" align="center" justify="center">
+            <Box flex align="center" justify="center" overflow={{ vertical: "hidden" }}>
+            {/* 상단 제목  */}
+            <Box align="center" justify="center"><Heading margin={{top: "10%", bottom: "5%"}}> 해당 운동 목록 </Heading></Box>
+            {/* 전체 영역 잡기 */}
+            <Box direction="row-responsive" justify="center" align="center" margin={{bottom:"5%"}}>
+                {/* 카드 형식, 운동 하나에 담을 내용 */}
+                <Box direction="column" align="center" border="all" round="small" margin="small">
+                    {/* 유튜브 영상 */}
+                    <Box margin="small" align="center">
+                        <iframe width="320" height="315" src="https://www.youtube.com/embed/YYFvGbSrP2U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                     </Box>
-                    <Box>
-                      <Text>이것만 하면 오늘 운동 끝!</Text>
+                    {/* 텍스트 */}
+                    <Box direction="column" align="center" pad="small">
+                        {/* 운동 제목 */}
+                        <Heading level="3"> 머신 인클라인 체스트 프레스 </Heading>
+                        {/* 세트, 카운트 */}
+                        <Box direction="row">
+                            <Text>1세트</Text>
+                            <Text>60초</Text>
+                        </Box>
                     </Box>
-                  </Box>
+                {/* 운동 하나 컨텐츠 / */}
+                </Box> 
+                {/* 카드 형식, 운동 하나에 담을 내용 */}
+                <Box direction="column" align="center" border="all" round="small" margin="small">
+                    {/* 유튜브 영상 */}
+                    <Box margin="small" align="center">
+                        <iframe width="320" height="315" src="https://www.youtube.com/embed/YYFvGbSrP2U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                    </Box>
+                    {/* 텍스트 */}
+                    <Box direction="column" align="center" pad="small">
+                        {/* 운동 제목 */}
+                        <Heading level="3"> 머신 인클라인 체스트 프레스 </Heading>
+                        {/* 세트, 카운트 */}
+                        <Box direction="row">
+                            <Text >1세트</Text>
+                            <Text>60초</Text>
+                        </Box>
+                    </Box>
+                {/* 운동 하나 컨텐츠 / */}
+                </Box> 
+                {/* 카드 형식, 운동 하나에 담을 내용 */}
+                <Box direction="column" align="center" border="all" round="small" margin="small">
+                    {/* 유튜브 영상 */}
+                    <Box margin="small" align="center">
+                        <iframe width="320" height="315" src="https://www.youtube.com/embed/YYFvGbSrP2U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                    </Box>
+                    {/* 텍스트 */}
+                    <Box direction="column" align="center" pad="small">
+                        {/* 운동 제목 */}
+                        <Heading level="3"> 머신 인클라인 체스트 프레스 </Heading>
+                        {/* 세트, 카운트 */}
+                        <Box direction="row">
+                            <Text>1세트</Text>
+                            <Text>60초</Text>
+                        </Box>
+                    </Box>
+                {/* 운동 하나 컨텐츠 / */}
                 </Box>
-                <Box direction="row" align="center" border="all" round="small" >  
-                  <Box height="small" width="small" margin="small">
-                    
-                  </Box>
-                  <Box direction="column" width="medium">
-                    <Box>
-                     
-                    </Box>
-                    <Box>
-                      <Text>이것만 하면 오늘 운동 끝!</Text>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            )}
-              </Box>
             </Box>
-         </Box>
 
-      )}
-    </ResponsiveContext.Consumer>
-    )
+            {/* 스톱워치, 시간 체크 */}
+            <Box direction="row" align="center" margin={{bottom:"5%"}}>
+                <Button label="도전" primary  margin="medium"></Button>
+                <Button label="완료" primary  margin="medium"></Button>
+            </Box>
+            {/* 스톱워치 기능 */}
+            <Box align = "center" justify="start" margin={{bottom:"10%"}}>
+                <Clock type = "digital"/>
+            </Box>
+            </Box>
+          </Box>
+        )}
+      </ResponsiveContext.Consumer>
+    );
   }
 }
 export default ExerciseList;

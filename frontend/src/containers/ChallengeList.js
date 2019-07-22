@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as BRouter, Route} from 'react-router-dom';
 import { Box, Heading, ResponsiveContext, Image, Text, Button } from "grommet";
 import Forlife from '../assets/forlife_exercise1.jpg';
 import TABATA from '../assets/tabata.jpg';
