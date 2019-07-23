@@ -45,9 +45,6 @@ public class Challenges implements Serializable{
     @Column(name = "challenge_text") private String challengeText;
     @Column(name = "challenge_photo") private String challengePhoto;
     
-    @ManyToOne
-    @JoinColumn(name = "coach_id") private Coaches coachId; 
-
     @OneToMany(mappedBy = "challengeId", orphanRemoval = true , fetch = FetchType.LAZY)
     private List<Exercises> Exercises = new ArrayList<>();
 

@@ -1,10 +1,6 @@
 package com.fourward.urcoach.entities;
 
-
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.stereotype.Component;
 
@@ -28,6 +25,7 @@ import lombok.ToString;
 /**
  * Coach
  */
+
 @Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -45,7 +43,8 @@ public class Coaches implements Serializable {
     @Column(name="coach_loc") private String coachLoc;
     @Column(name="coach_info") private String coachInfo;
     @Column(name="coach_link") private String coachLink;
-    @Column(name="coach_photo") private String coachPhoto;
+    @Column(name="coach_photo1") private String coachPhoto1;
+    @Column(name="coach_photo2") private String coachPhoto2;
     @Column(name="coach_name") private String coachName;
     @Column(name="coach_resume1") private String coachResume1;
     @Column(name="coach_resume2") private String coachResume2;
@@ -53,20 +52,18 @@ public class Coaches implements Serializable {
     @Column(name="coach_resume4") private String coachResume4;
     @Column(name="coach_resume5") private String coachResume5;
 
-    @OneToMany(mappedBy = "coachId")
-    private List<Challenges> challenges = new ArrayList<>();
-
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "member_id") private Members memberId;
-
     @Builder
-    public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto, String coachName,
+    public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto1, String coachPhoto2, String coachName,
             String coachLink, String coachResume1, String coachResume2, String coachResume3,String coachResume4,String coachResume5) {
         this.coachId = coachId;
         this.coachLoc = coachLoc;
         this.coachInfo = coachInfo;
         this.coachLink = coachLink;
-        this.coachPhoto = coachPhoto;
+        this.coachPhoto1 = coachPhoto1;
+        this.coachPhoto2 = coachPhoto2;
         this.coachName = coachName;
         this.coachResume1 = coachResume1;
         this.coachResume2 = coachResume2;
