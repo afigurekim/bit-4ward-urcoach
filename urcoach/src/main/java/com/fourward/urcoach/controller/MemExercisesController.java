@@ -3,7 +3,7 @@ package com.fourward.urcoach.controller;
 import java.util.HashMap;
 
 import com.fourward.urcoach.entities.Exercises;
-import com.fourward.urcoach.entities.MemExercises;
+import com.fourward.urcoach.entities.MyExercises;
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.MemExercisesRepository;
 
@@ -22,7 +22,7 @@ public class MemExercisesController {
 
     // 커스터마이징 운동 루틴 저장
     @PostMapping("/insert")
-    public HashMap<String,String> insertMemEx(@RequestBody MemExercises memExercises,
+    public HashMap<String,String> insertMemEx(@RequestBody MyExercises memExercises,
                                              @RequestParam("memberId")Members memberId,
                                              @RequestParam("exerciseId") Exercises exerciseId){
         HashMap<String,String> map = new HashMap<>();

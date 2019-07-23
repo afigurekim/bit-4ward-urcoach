@@ -28,7 +28,7 @@ class SignUp extends Component {
                       <p>운동 및 식사 일일 기록</p>
                     </Text>
                   </Box>
-                  <Button label="운동 회원으로 가입하기" color="black" primary color="status-disabled"></Button>
+                  <Button label="운동 회원으로 가입하기" color="black" primary color="status-disabled" href="/SignUp"></Button>
                 </Box>
                 {/* 코치 회원 */}
                 <Box pad="large" align="center" round gap="small" border={{style: "solid", size: "medium", color: "black"}} >
@@ -41,7 +41,7 @@ class SignUp extends Component {
                     <p>운동 회원들에게 맞춤형 챌린지 추천</p>
                   </Text>
                 </Box>
-                <Button label="코치 회원으로 가입하기" primary color="status-disabled"></Button>
+                <Button label="코치 회원으로 가입하기" primary color="status-disabled" href="SignUp"></Button>
                 </Box>
               </Box>
             </Box>

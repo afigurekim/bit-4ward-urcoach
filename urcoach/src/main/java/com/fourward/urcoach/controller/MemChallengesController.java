@@ -3,8 +3,8 @@ package com.fourward.urcoach.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import com.fourward.urcoach.entities.MemChallenges;
 import com.fourward.urcoach.entities.Members;
+import com.fourward.urcoach.entities.MyChallenges;
 import com.fourward.urcoach.repositories.MemChallengesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class MemChallengesController {
 
     // 커스터마이징한 챌린지 값 넣기
     @PostMapping("/insert")
-    public HashMap<String, String> insertMemChallenges(@RequestBody MemChallenges memChallenges){
+    public HashMap<String, String> insertMemChallenges(@RequestBody MyChallenges memChallenges) {
         HashMap<String, String> map = new HashMap<>();
 
         memChallRepo.save(memChallenges);
@@ -37,7 +37,7 @@ public class MemChallengesController {
     
     // memberId 별로 가져오기
     @GetMapping("/findbymemberid")
-    public List<MemChallenges> findByMemberId(@RequestParam("memberId") Members memberId){
+    public List<MyChallenges> findByMemberId(@RequestParam("memberId") Members memberId){
 
         return memChallRepo.findAll();
     }

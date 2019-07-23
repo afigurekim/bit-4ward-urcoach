@@ -69,11 +69,11 @@ public class Members implements Serializable{
   
     @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<MemExercises> memExercises = new ArrayList<>();
+    private List<MyExercises> memExercises = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<MemChallenges> memChallenges = new ArrayList<>();
+    private List<MyChallenges> memChallenges = new ArrayList<>();
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 

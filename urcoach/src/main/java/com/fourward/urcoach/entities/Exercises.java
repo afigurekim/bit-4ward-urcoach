@@ -50,7 +50,7 @@ public class Exercises implements Serializable{
     @Column(name = "exercise_cal") private String exerciseCal;
 
     @OneToMany(mappedBy = "exerciseId")
-    private List<MemExercises> memExercises = new ArrayList<>(); 
+    private List<MyExercises> memExercises = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "challenge_id")
