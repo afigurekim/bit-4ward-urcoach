@@ -1,45 +1,53 @@
 import React, { Component } from 'react'
-import { Add } from "grommet-icons";
+
 import {
     Box,
     Button,
     Heading,
     Image,
     ResponsiveContext,
-    Grid,
     Text,
     Carousel,
     TextInput
   } from 'grommet';
 
-//  const [value, setValue] = React.useState('');
-
- 
 
 class GymMatching extends Component {
     constructor(props){
         super(props);
         this.state = {
-         
+             keyword:'',
+             gyms:[],
+             error: false
         };
-        
+        this.handleChange = this.handleChange.bind(this);
     }
-    
-    componentDidMount(){
-       fetch("http://localhost:8080/gyms/search")
-        .then( res => res.json()
-        ).then( res => {
-            this.setState({
-              
+    handleChange = e => {
+        this.setState({
+            keyword:e.target.value
+        })
+    }
+    onSubmit(){
+        alert("클릭");
+
+        const search = {
+            'keyword':this.state.keyword
+        }
+
+        fetch("http://localhost:8080/gyms/search/"+this.state.keyword)
+        .then((res) => res.json()
+        ).then(res => {
+               this.setState({
+                gyms:res
             })
         }).catch( error => {
             console.error(error);
             this.setState({
-                error: true
-            })
-        })
+                error:true
+         })
+      })
     }
-   
+
     render(){
         return (
             <ResponsiveContext.Consumer>
@@ -61,17 +69,33 @@ class GymMatching extends Component {
                     <Box align="center">
                         <Heading level="1">주변 피트니스 센터</Heading>
                         <Text>종로구 종로 2가</Text>
+                        {/* <Text margin="large">지역을 검색해주세요</Text> */}
                     </Box>
 
                     {/* 검색창 */}
                     <Box pad="large">
                         <TextInput 
                              placeholder="현재 지역을 입력해 주세요( 종로구 )"
-                            // value={value}
-                            // onChange={event => setValue(event.target.value)}
+                             type="text"
+                             name="keyword"
+                             value={this.state.keyword}
+                             onChange={this.handleChange}
                         />
-                        <Button type="submit" primary label="검색"/>
+                        <Button type="submit" onClick={this.onSubmit.bind(this)} primary label="검색"/>
                     </Box>
+
+                    <Box>
+                        {this.state.gyms.map(gym => {
+                                return(
+                                        <Box key={gym.gymId}>
+                                            <Image src="https://placeimg.com/300/200"/>
+                                            <Box>{gym.gymName}</Box> 
+                                            <Box>{gym.gymLoc}</Box>  
+                                        </Box>
+                                )
+                            })}
+                    </Box>
+
                     </Box>
                         </Box>
                     </Box>

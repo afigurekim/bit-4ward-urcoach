@@ -51,23 +51,19 @@ class CoachMatchingDetail extends Component{
             level:3
         }
         let map = new kakao.maps.Map(mapContiner,mapOption);
-
         let geocoder  = new kakao.maps.services.Geocoder();
         geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status){
 
             if(status === daum.maps.services.Status.OK){
                 let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
                 let marker = new kakao.maps.Marker({
                     map: map,
                     position: coords
                 });
-
                 let infowindow = new kakao.maps.InfoWindow({
                     content:'<div style={style_2}>fit194</div>'
                 });
                 infowindow.open(map,marker);
-
                 map.setCenter(coords);
             }
 

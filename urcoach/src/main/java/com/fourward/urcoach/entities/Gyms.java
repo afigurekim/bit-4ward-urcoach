@@ -32,7 +32,7 @@ import lombok.ToString;
 public class Gyms implements Serializable{
   
   private static final long serialVersionUID = 1L;
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "gym_id") private Long gymId;

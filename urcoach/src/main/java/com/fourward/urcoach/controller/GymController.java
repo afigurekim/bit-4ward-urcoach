@@ -15,13 +15,13 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,13 +31,14 @@ import org.springframework.web.bind.annotation.PathVariable;
  * GymController
  */
 
+ @CrossOrigin(origins = "http://localhost:3000")
  @RestController
  @RequestMapping("/gyms")
 public class GymController {
     @Autowired GymsRepository repo;
-
     @PersistenceContext
     EntityManager entity;
+
 
     @PostMapping("/insert")
     public HashMap <String,String> insertForm(@RequestBody Gyms gyms){
@@ -66,7 +67,7 @@ public class GymController {
         return list;
     }
     
-    @PutMapping("update/{gymId}")
+    @GetMapping("update/{gymId}")
     public HashMap <String,String> update(@PathVariable Long gymId, @RequestBody Gyms gyms){
         HashMap<String,String> map = new HashMap<>();
         Gyms oldGyms = repo.findById((gymId)).get();
@@ -85,26 +86,38 @@ public class GymController {
         repo.deleteById(gymId);
     }
 
-    // @GetMapping("/search")
-    // public List<Gyms> search(){
-    //     QGyms gyms = QGyms.gyms;
-    //     BooleanBuilder builder = new BooleanBuilder();
-    //     JPAQueryFactory query = new JPAQueryFactory(entity);
-    //     List<Object> list = new ArrayList<>();
-
-    //     // 동적
+    
+    @GetMapping("/search/{keyword}")
+    public List<Gyms> search(@PathVariable String keyword){
        
-    //     builder.and(gyms.gymId.eq(1L).and(gyms.gymLoc.eq("종로")));
-       
-    //     query.from(gyms)
-    //         .where(builder)
-    //         .fetch()
-    //         .forEach(arr -> list.add(arr));
+        System.out.println(keyword);
 
-    //     // // 정적
-    //     // query.from(gyms)
-    //     //     .where(gyms.gymId.eq(5L).and(gyms.gymName.eq("asdf")))
-    //     //     .fetch()
-    //     //     .forEach(arr -> list.add(arr));
-    // }
+        QGyms gyms = QGyms.gyms;
+        // Gyms gyms2 = new Gyms();
+
+        BooleanBuilder builder = new BooleanBuilder();
+        JPAQueryFactory query = new JPAQueryFactory(entity);
+        
+        List<Gyms> list = new ArrayList<>();
+      
+         // 동적
+         // builder.and(gyms.gymId.eq(1L).and(gyms.gymLoc.eq("keyword")));
+         // builder.and(gyms.gymLoc.like("%"+ keyword+"%"));
+         // builder.and(gyms.gymId.eq(0L).and(gyms.gymLoc.like("%"+ keyword+"%")));
+            builder.and(gyms.gymId.gt(0L).and(gyms.gymLoc.like("%"+ keyword+"%")));
+
+          query.from(gyms)
+                .where(builder)
+                .fetch().forEach(obj -> list.add((Gyms)obj));
+
+                System.out.println(list.toString());
+                
+    return list;
+
+        // // 정적
+        // query.from(gyms)
+        //     .where(gyms.gymId.eq(5L).and(gyms.gymName.eq("asdf")))
+        //     .fetch()
+        //     .forEach(arr -> list.add(arr));
+    }
 }
