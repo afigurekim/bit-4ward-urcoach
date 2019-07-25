@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Heading,
-  Text,
   Image
 } from "grommet";
 import commonChallengePhoto from '../assets/commonChallenge.jpg';

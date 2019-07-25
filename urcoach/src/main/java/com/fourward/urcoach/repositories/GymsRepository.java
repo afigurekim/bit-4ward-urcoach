@@ -16,12 +16,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GymsRepository extends JpaRepository<Gyms, Long>, QuerydslPredicateExecutor<Gyms> {
     
-    public default Predicate makePredicate(String type, String keyword){
-        BooleanBuilder builder = new BooleanBuilder();
-
-        QGyms gyms = QGyms.gyms;
-
-        // builder.and(gyms.)
-         
-    }
 }

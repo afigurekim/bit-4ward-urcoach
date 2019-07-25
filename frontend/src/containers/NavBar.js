@@ -21,6 +21,8 @@ import MyChallengeEnter from './MyChallengeEnter';
 import MyChallengeMake from './MyChallengeMake';
 import MyChallengeList from './MyChallengeList';
 import SignUp from './SignUp';
+import MyPage from './MyPage';
+import TestImage from '../assets/commonChallenge.jpg'
 
 // 로그인했을 때 로그인, 회원가입 버튼 --> 로그아웃, 프로필버튼으로 수정 --> 콜백으로 해야함
 
@@ -113,6 +115,7 @@ class NavBar extends Component {
                   <Box direction="row" align="center" gap="small" pad="xsmall">
                     <Button primary color="#00acea" label="로그인" href="/login"/>
                     <Button primary color="#fedb41" label="회원가입" href="/SignUpType" />
+                    <Button primary color="#fedb41" label="마이페이지" href="/MyPage" />
                   </Box>
                 </Box>
               ) : (
@@ -131,6 +134,7 @@ class NavBar extends Component {
                             <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
                               <Button primary color="#00acea" label="로그인" href="/login" />
                               <Button primary color="#fedb41" label="회원가입" href="/SignUpType"/>
+                              <Button primary color="#fedb41" label="마이페이지" href="/MyPage"/>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
@@ -187,6 +191,7 @@ class NavBar extends Component {
           <Route path="/MyChallengeMake" component={MyChallengeMake} />
           <Route path="/MyChallengeList" component={MyChallengeList} />
           <Route path="/SignUp" component={SignUp} />
+          <Route path="/MyPage" component={MyPage} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
