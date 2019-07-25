@@ -16,6 +16,13 @@ import Main from '../components/Main';
 import SignUp from './SignUp';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
+import DiaryNew from './DiaryNew';
+import DiaryList from './DiaryList';
+import DiaryRead from './DiaryRead';
+import DiaryEdit from './DiaryEdit';
+import MyExerciseList from './MyExerciseList';
+import MyExerciseRead from './MyExerciseRead';
+import PhotoUpload from '../components/PhotoUpload';
 
 
 const HeadBar = (props) => (
@@ -77,7 +84,7 @@ class NavBar extends Component {
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
                       { label: "데일리 리포트", href: "#" },
-                      { label: "운동 다이어리", href: "#" }
+                      { label: "운동 다이어리", href: "/diary/new" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -149,7 +156,7 @@ class NavBar extends Component {
                                 <Text><MenuA href="#">데일리 리포트</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">운동 다이어리</MenuA></Text>
+                                <Text><MenuA href="/diary/new">운동 다이어리</MenuA></Text>
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -173,9 +180,16 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/challengelist" component={ChallengeList} />
+          <Route path="/signup" exact component={SignUp} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/challengelist" exact component={ChallengeList} />
+          <Route path="/diary/new" exact component={DiaryNew} />
+          <Route path="/diary/list" exact component={DiaryList} />
+          <Route path="/diary/read" exact component={DiaryRead} />
+          <Route path="/diary/edit" exact component={DiaryEdit} />
+          <Route path="/photoupload" exact component={PhotoUpload} />
+          <Route path="/myexercise/list" exact component={MyExerciseList} />
+          <Route path="/myexercise/read" exact component={MyExerciseRead} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>

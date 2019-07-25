@@ -61,7 +61,7 @@ public class Members implements Serializable{
     private List<Coaches> coaches = new ArrayList<>();
   
     @OneToMany(mappedBy = "memberId")
-    private List<MemExercises> memExercises = new ArrayList<>();
+    private List<MyExercises> memExercises = new ArrayList<>();
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 
