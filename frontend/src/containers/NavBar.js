@@ -186,7 +186,7 @@ class NavBar extends Component {
           <Route path="/SignUpType" component={SignUpType} />
           <Route path="/login" component={Login} />
           <Route path="/challengelist" component={ChallengeList} />
-          <Route path="/exerciselist" component={ExerciseList} />
+          <Route path="/exerciselist/:challenge.challengeId" component={ExerciseList} />
           <Route path="/MyChallengeEnter" component={MyChallengeEnter} />
           <Route path="/MyChallengeMake" component={MyChallengeMake} />
           <Route path="/MyChallengeList" component={MyChallengeList} />

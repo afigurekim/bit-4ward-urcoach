@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 import { Box, Heading, ResponsiveContext, Text, Clock, Button } from "grommet";
+import axios from "axios";
 
 class ExerciseList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        challengeId: ''
+  };
+}
+  componentDidMount() {
+    console.log("exerciselist 접근");
+    // const {challenge}
+    axios
+        .get(`http://localhost/8080/exercises/findByChallengeId/{challengeId}`)
+        .then(res => {
+            console.log("exerciselist : " + res.data );
+        })
+        .catch(res =>{
+            alert("접근 실패")
+        });
   }
 
   render() {
