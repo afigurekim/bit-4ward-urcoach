@@ -1,7 +1,5 @@
 package com.fourward.urcoach.controller;
 
-import java.awt.print.Pageable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.CoachesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,9 +40,9 @@ public class CoachesController {
     }
 
     // R(1)
-    @GetMapping("/find/{id}")
-    public Coaches findByCoachesId(@PathVariable Long id){
-        Coaches coaches = repo.findById(id).orElseThrow(EntityNotFoundException::new);
+    @GetMapping("/find/{coachId}")
+    public Coaches findByCoachesId(@PathVariable Long coachId){
+        Coaches coaches = repo.findById(coachId).orElseThrow(EntityNotFoundException::new);
         return coaches;
     }
 

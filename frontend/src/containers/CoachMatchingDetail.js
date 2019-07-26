@@ -5,18 +5,17 @@ import {
     Image,
     ResponsiveContext,
     Paragraph,
-    Heading,
-    Grommet,
-    grommet
+    Heading
  } from "grommet";
 
 // chat
 import ChatMessage from '../components/ChatMaessage';
 import ChatApp from './ChatApp';
 import { default as Chatkit } from '@pusher/chatkit-server'
+import axios from 'axios';
 
 
-const chatkit = new Chatkit({
+const chatkit = new Chatkit ({
     instanceLocator: "v1:us1:e55ce926-ac88-4558-91e5-00767d8792c6",
     key: "ba8f3f02-dd0e-4ec7-b27a-ef4fbe188f88:Q+hfapQQTfjwuJTqsfFgm5LLgE78RvBnNKM6VX8Bh/s="
   })
@@ -32,18 +31,21 @@ const chatkit = new Chatkit({
     textalign:"center",
     // padding:"6px"
 }
+
   
 class CoachMatchingDetail extends Component{
     constructor(props){
         super(props)
         this.state = {
             id: 'callum',
-            currentView: 'ChatMessage'
+            currentView: 'ChatMessage',
+            coach:[]
         }
         this.changeView = this.changeView.bind(this);
         this.createUser = this.createUser.bind(this);
     }
     componentDidMount(){
+
         const kakao = window.kakao;
         const mapContiner = document.getElementById('map'),
         mapOption = {
@@ -68,11 +70,29 @@ class CoachMatchingDetail extends Component{
             }
 
         });
+        //fetch
+
+        const { coachId }  = this.props.match.params
+
+        fetch(`http://localhost:8080/coaches/find/${coachId}`)
+        .then(res => res.json()
+        ).then(res => {
+            this.setState({
+                coach:res
+            })
+            
+        }).catch( error => {
+            console.error(error);
+            this.setState({
+                error:true
+            })
+        })
+      
     }
     createUser() {
         chatkit.createUser({
             id: 'userId',
-            name: 'Some name',
+            name: 'Some name'
           })
             .then(() => {
               console.log('User created successfully');
@@ -109,10 +129,10 @@ class CoachMatchingDetail extends Component{
                             >
                                     <div>
                                         <Heading level={2} size="large">코치소개</Heading>
-                                        {/* <Text size="xlarge">Text XLarge</Text> */}
-                                        <Paragraph size="large">
-                                        Paragraph - Large
-                                        </Paragraph>
+                                            <Paragraph size="large">
+                                                {this.state.coach.coachId}
+                                                {this.state.coach.coachInfo}
+                                            </Paragraph>
                                     </div>
                             </Box>
 

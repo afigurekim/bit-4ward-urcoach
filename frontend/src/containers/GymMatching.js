@@ -29,17 +29,18 @@ class GymMatching extends Component {
     }
     onSubmit(){
         alert("클릭");
-
         const search = {
             'keyword':this.state.keyword
         }
-
         fetch("http://localhost:8080/gyms/search/"+this.state.keyword)
         .then((res) => res.json()
+        
         ).then(res => {
+            
                this.setState({
                 gyms:res
             })
+            
         }).catch( error => {
             console.error(error);
             this.setState({
@@ -49,6 +50,7 @@ class GymMatching extends Component {
     }
 
     render(){
+                    
         return (
             <ResponsiveContext.Consumer>
             { size => (
@@ -85,12 +87,13 @@ class GymMatching extends Component {
                     </Box>
 
                     <Box>
-                        {this.state.gyms.map(gym => {
+                        {this.state.gyms.map( gym => {
                                 return(
-                                        <Box key={gym.gymId}>
+
+                                       <Box key={gym.gymId}>
                                             <Image src="https://placeimg.com/300/200"/>
-                                            <Box>{gym.gymName}</Box> 
-                                            <Box>{gym.gymLoc}</Box>  
+                                                <Box>{gym.gymName}</Box> 
+                                                <Box>{gym.gymLoc}</Box>  
                                         </Box>
                                 )
                             })}

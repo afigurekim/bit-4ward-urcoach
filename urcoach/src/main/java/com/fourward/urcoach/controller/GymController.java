@@ -86,7 +86,7 @@ public class GymController {
         repo.deleteById(gymId);
     }
 
-    
+    // querydsl:
     @GetMapping("/search/{keyword}")
     public List<Gyms> search(@PathVariable String keyword){
        
@@ -111,7 +111,7 @@ public class GymController {
                 .fetch().forEach(obj -> list.add((Gyms)obj));
 
                 System.out.println(list.toString());
-                
+
     return list;
 
         // // 정적
@@ -119,5 +119,6 @@ public class GymController {
         //     .where(gyms.gymId.eq(5L).and(gyms.gymName.eq("asdf")))
         //     .fetch()
         //     .forEach(arr -> list.add(arr));
+
     }
 }

@@ -182,7 +182,7 @@ class NavBar extends Component {
           <Route path="/login" component={Login} />
           <Route path="/coachmatching" component={CoachMatching} />
           <Route path="/challengelist" component={ChallengeList} />
-          <Route path="/CoachMatchingDetail" exact component={CoachMatchingDetail} />
+          <Route path="/CoachMatchingDetail/:coachId" component={CoachMatchingDetail} />
           <Route path="/GymMatchingDetail" exact component={GymMatchingDetail}/>
           <Route path="/GymMatching" exact component={GymMatching}/>
           </BRouter>
