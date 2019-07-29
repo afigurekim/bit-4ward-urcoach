@@ -9,6 +9,7 @@ import {
 
 
 class MemChallengeEnter extends Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
@@ -60,8 +61,9 @@ class MemChallengeEnter extends Component {
                     label="챌린지 만들기"
                     color="black"
                     primary
+                    // eslint-disable-next-line react/jsx-no-duplicate-props
                     color="status-disabled"
-                    href="/MyChallengeMake"
+                    href="/MyChallengeName"
                   />
                 </Box>
                 {/* 내 챌린지 보여주기 */}

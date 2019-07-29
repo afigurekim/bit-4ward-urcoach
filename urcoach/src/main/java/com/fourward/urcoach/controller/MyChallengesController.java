@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.entities.MyChallenges;
-import com.fourward.urcoach.repositories.MemChallengesRepository;
+import com.fourward.urcoach.repositories.MyChallengesRepository;
+import com.fourward.urcoach.repositories.MyExercisesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,18 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * MemChallengesController
  */
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/memchallenges")
-public class MemChallengesController {
+@RequestMapping("/myChallenges")
+public class MyChallengesController {
 
-    @Autowired MemChallengesRepository memChallRepo;
+    @Autowired MyChallengesRepository myChallRepo;
+    @Autowired MyExercisesRepository myExReo;
 
     // 커스터마이징한 챌린지 값 넣기
     @PostMapping("/insert")
-    public HashMap<String, String> insertMemChallenges(@RequestBody MyChallenges memChallenges) {
+    public HashMap<String, String> insertMyChallenges(@RequestBody MyChallenges myChallenges) {
         HashMap<String, String> map = new HashMap<>();
 
-        memChallRepo.save(memChallenges);
+        myChallRepo.save(myChallenges);
 
         map.put("result", "success");
         return map;
@@ -39,7 +43,7 @@ public class MemChallengesController {
     @GetMapping("/findbymemberid")
     public List<MyChallenges> findByMemberId(@RequestParam("memberId") Members memberId){
 
-        return memChallRepo.findAll();
+        return myChallRepo.findAll();
     }
     
 }

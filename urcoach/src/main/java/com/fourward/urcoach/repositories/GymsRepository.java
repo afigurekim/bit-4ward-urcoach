@@ -2,9 +2,6 @@ package com.fourward.urcoach.repositories;
 
 
 import com.fourward.urcoach.entities.Gyms;
-import com.fourward.urcoach.entities.QGyms;
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;

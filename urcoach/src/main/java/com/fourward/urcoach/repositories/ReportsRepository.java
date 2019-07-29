@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReportsRepository extends JpaRepository<Reports, Long>{
 
-    
+    public Reports findByReportDate(String reportDate);
+    public void deleteByReportDate(String reportDate);
 }

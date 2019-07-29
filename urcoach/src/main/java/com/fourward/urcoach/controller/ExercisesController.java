@@ -57,4 +57,11 @@ public class ExercisesController {
     public List<Exercises> findByChallengeId(@PathVariable ("challengeId") Challenges challengeId){
         return exRepo.findByChallengeId(challengeId);
     }
+
+    // exerciseName 중복 제거
+    @GetMapping(value="/findGroupByExerciseName")
+    public List<Exercises> findGroupByExerciseName() {
+        return exRepo.findGroupByExerciseName();
+    }
+    
 }

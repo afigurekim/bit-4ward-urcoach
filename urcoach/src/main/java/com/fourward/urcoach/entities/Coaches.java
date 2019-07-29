@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -52,7 +54,11 @@ public class Coaches implements Serializable {
     @Column(name="coach_resume5") private String coachResume5;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "member_id") private Members memberId;
+
+    @ManyToOne
+    @JoinColumn(name = "gym_id") private Gyms gymId;
 
     @Builder
     public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto1,String coachPhoto2, String coachName,

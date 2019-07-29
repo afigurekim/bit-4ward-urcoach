@@ -35,12 +35,6 @@ class ChallengeList extends Component {
       });
   }
 
-  // ExerciseName을 클릭하면 해당 운동 목록들로 간다.
-  // challengeId를 가지고 ExerciseList 컴포넌트로 간다.
-  // toExerciseList(challengeId){
-  
-  // }
-
   render() {
     return (
       <ResponsiveContext.Consumer>
@@ -56,17 +50,17 @@ class ChallengeList extends Component {
               <Heading margin={{ top: "10%", bottom: "5%" }}>
                 챌린지 목록
               </Heading>
-
-              {/* row-responsive */}
-              {this.state.challenges.map( challenge => {
-                  return(
-                    <Box
+              <Box
                       direction="row-responsive"
                       justify="center"
                       align="center"
                       margin={{ bottom: "10%" }}
-                      key= {challenge.challengeId}
-                    >
+                      wrap="true"
+                      gap="medium"
+              >
+              {/* row-responsive */}
+              {this.state.challenges.map( challenge => {
+                  return(
                       <Box direction="row-responsive" align="center" border="all" round="small">
                         <Box direction="row-responsive" height="small" width="small" margin="small">
                           {/* challengePhoto */}
@@ -81,11 +75,11 @@ class ChallengeList extends Component {
                         <Box direction="column" width="medium">
                           <Box>
                             <Link to = {{
-                              pathname : `/exerciselist/${challenge.challengeId}`,
+                              pathname : `/exerciselist/${challenge.challengeId}/${challenge.challengeName}`
                               
                             }}>
                             <Button>
-                              <Heading level="3">
+                              <Heading level="3" style={{ color: "black" }}>
                                 {/* challengeName */}
                                 {challenge.challengeName}
                               </Heading>
@@ -98,13 +92,10 @@ class ChallengeList extends Component {
                           </Box>
                         </Box>
                       </Box>
-                    </Box>
-                
-
                   )
                 }
               )}
-
+              </Box>
             </Box>
           </Box>
         )}
