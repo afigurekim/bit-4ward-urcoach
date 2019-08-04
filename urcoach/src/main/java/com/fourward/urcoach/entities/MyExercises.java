@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -40,28 +39,28 @@ public class MyExercises implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "my_exercise_id") private Long myExerciseId;
-    @Column(name = "my_exercise_date") private String myExerciseDate;
-    @Column(name = "my_exercise_time") private String myExerciseTime;
-    @Column(name = "my_exercise_order") private String myExerciseOrder;
-    @Column(name = "my_exercise_cal") private String myExerciseCal;
+    @Column(name = "my_exercise_id") private Long          myExerciseId;
+    @Column(name = "my_exercise_date") private String      myExerciseDate;
+    @Column(name = "my_exercise_time") private String      myExerciseTime;
+    @Column(name = "my_exercise_cal") private String       myExerciseCal;
     @Column(name = "my_exercise_complete") private Boolean myExerciseComplete;
-    @Column(name = "my_exercise_set") private String myExerciseSet;
-    @Column(name = "my_exercise_count") private String myExerciseCount;
-
-    @ManyToOne
-    @JoinColumn(name = "member_id") private Members memberId;
+    @Column(name = "my_exercise_set") private String       myExerciseSet;
+    @Column(name = "my_exercise_count") private String     myExerciseCount;
 
     @ManyToOne
     @JsonIgnore
+    @JoinColumn(name = "member_id") private Members memberId;
+
+    @ManyToOne
     @JoinColumn(name = "exercise_id") private Exercises exerciseId;
 
-    @OneToOne(mappedBy = "myExerciseId")
-    private MyChallenges myChallenges;
+    @ManyToOne
+    @JoinColumn(name = "myChallenge_id")
+    private MyChallenges myChallengeId;
    
     @Builder
     private MyExercises(String myExerciseDate, Boolean myExerciseComplete, String myExerciseTime, String myExerciseCal,
-                            String myExerciseSet, String myExerciseCount, String myExerciseOrder){
+                            String myExerciseSet, String myExerciseCount){
 
         this.myExerciseDate = myExerciseDate;
         this.myExerciseComplete = myExerciseComplete;
@@ -69,6 +68,6 @@ public class MyExercises implements Serializable{
         this.myExerciseCal = myExerciseCal;
         this.myExerciseCount = myExerciseCount;
         this.myExerciseSet = myExerciseSet;
-        this.myExerciseOrder = myExerciseOrder;
+    
     }
 }

@@ -1,7 +1,7 @@
 package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
-import java.util.function.Supplier;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
@@ -20,16 +20,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-/**
- * HomeController
- */
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/members")
 public class MembersController {
 
-    @Autowired private MembersRepository memRepo;
+    @Autowired MembersRepository memRepo;
 
     //member회원가입 local
     @PostMapping("/join")
@@ -43,14 +39,19 @@ public class MembersController {
 
     //로그인 하기
     @PostMapping("/login")
-    public Members login(@RequestBody Members members){
+    public Optional<Members> login(@RequestBody Members members){
         System.out.println("로그인 컨트롤러 : " + members.getMemberEmail() + members.getMemberPw());
+        
+        System.out.println("members.getMemberPw() : "+members.getMemberPw());
+       Optional<Members> result = memRepo.findByMemberEmailAndMemberPw(members.getMemberEmail(), members.getMemberPw());
 
-        Supplier<Members> fx = (() -> {
-            return memRepo.findByMemberEmailAndMemberPw(members.getMemberEmail(), members.getMemberPw());
-        });
-        System.out.println("로그인 확인 :" + (Members)fx.get());
-        return (Members) fx.get();
+        if(result.isPresent()){
+            System.out.println(result + "111");
+            return result;
+        }else{
+            System.out.println(result + "222");
+            return null;
+        }
     }
 
     //회원에 id 따른 정보 가져오기
@@ -97,7 +98,4 @@ public class MembersController {
         map.put("result", "member delete success");
         return map;
     }
-
-
-    
 }

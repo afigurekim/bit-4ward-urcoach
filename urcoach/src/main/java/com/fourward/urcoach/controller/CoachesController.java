@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import com.fourward.urcoach.entities.Coaches;
+import com.fourward.urcoach.entities.Gyms;
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.CoachesRepository;
 
@@ -33,13 +34,11 @@ public class CoachesController {
     private CoachesRepository repo;
 
     // C
-    @PostMapping("/insert")
-    public HashMap<String, String> insertForm(@RequestBody Coaches coaches, @RequestParam Members memberId) {
-        HashMap<String, String> map = new HashMap<>();
+    @PostMapping("/insert/{memberId}/{gymId}")
+    public Coaches insertForm(@RequestBody Coaches coaches, @PathVariable Members memberId, @PathVariable Gyms gymId) {
         coaches.setMemberId(memberId);
-        repo.save(coaches);
-        map.put("result", "입력 성공");
-        return map;
+        coaches.setGymId(gymId);
+        return repo.save(coaches);
     }
 
     // R(1)

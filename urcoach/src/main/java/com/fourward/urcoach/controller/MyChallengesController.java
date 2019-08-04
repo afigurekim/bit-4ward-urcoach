@@ -11,10 +11,10 @@ import com.fourward.urcoach.repositories.MyExercisesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,9 +29,12 @@ public class MyChallengesController {
     @Autowired MyExercisesRepository myExReo;
 
     // 커스터마이징한 챌린지 값 넣기
-    @PostMapping("/insert")
-    public HashMap<String, String> insertMyChallenges(@RequestBody MyChallenges myChallenges) {
+    @PostMapping("/insert/{memberId}")
+    public HashMap<String, String> insertMyChallenges(@RequestBody MyChallenges myChallenges,
+    @PathVariable Members memberId) {
         HashMap<String, String> map = new HashMap<>();
+
+        myChallenges.setMemberId(memberId);
 
         myChallRepo.save(myChallenges);
 
@@ -40,10 +43,15 @@ public class MyChallengesController {
     }
     
     // memberId 별로 가져오기
-    @GetMapping("/findbymemberid")
-    public List<MyChallenges> findByMemberId(@RequestParam("memberId") Members memberId){
+    @GetMapping("/findbymemberid/{memberId}")
+    public List<MyChallenges> findByMemberId(@PathVariable Members memberId){
 
-        return myChallRepo.findAll();
+        return myChallRepo.findByMemberId(memberId);
     }
-    
+
+    // findFirstByOrderByIdDesc
+    @GetMapping("/findFirstByOrderByMyChallengeIdDesc")
+    public MyChallenges findFirstByOrderByMyChallengeIdDesc(){
+        return myChallRepo.findFirstByOrderByMyChallengeIdDesc();
+    }    
 }

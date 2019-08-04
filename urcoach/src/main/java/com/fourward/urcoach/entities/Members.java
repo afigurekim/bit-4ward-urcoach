@@ -42,14 +42,14 @@ public class Members implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id") private Long memberId;
-    @Column(name = "member_type", nullable = false) private Integer memberType;
+    @Column(name = "member_type", nullable = false) private Integer                memberType;
     @Column(name = "member_email", nullable = false, unique = true) private String memberEmail;
-    @Column(name = "member_pw", nullable = false)private String memberPw;
-    @Column(name = "member_name", nullable = false) private String memberName;
-    @Column(name = "member_height") private String memberHeight;
-    @Column(name = "member_weight") private String memberWeight;
-    @Column(name = "member_photo") private String memberPhoto;
-    @Column(name = "member_text") private String memberText;
+    @Column(name = "member_pw", nullable = false)private String                    memberPw;
+    @Column(name = "member_name", nullable = false) private String                 memberName;
+    @Column(name = "member_height") private String                                 memberHeight;
+    @Column(name = "member_weight") private String                                 memberWeight;
+    @Column(name = "member_photo") private String                                  memberPhoto;
+    @Column(name = "member_text") private String                                   memberText;
     
     @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
     @JsonIgnore
@@ -69,11 +69,11 @@ public class Members implements Serializable{
   
     @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<MyExercises> memExercises = new ArrayList<>();
+    private List<MyExercises> myExercises = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<MyChallenges> memChallenges = new ArrayList<>();
+    private List<MyChallenges> myChallenges = new ArrayList<>();
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 

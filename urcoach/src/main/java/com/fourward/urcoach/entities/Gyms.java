@@ -23,10 +23,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- * Gym
- */
-
 @Component
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
@@ -35,8 +31,9 @@ import lombok.ToString;
 @ToString(exclude = "coaches")
 @Table(name = "gyms")
 public class Gyms implements Serializable{
-  
+
   private static final long serialVersionUID = 1L;
+
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

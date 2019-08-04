@@ -37,11 +37,8 @@ public class GymsController {
     EntityManager entity;
 
     @PostMapping("/insert")
-    public HashMap<String, String> insertForm(@RequestBody Gyms gyms) {
-        HashMap<String, String> map = new HashMap<>();
-        repo.save(gyms);
-        map.put("result", "insert sucess");
-        return map;
+    public Gyms insertForm(@RequestBody Gyms gyms) {
+        return        repo.save(gyms);
     }
 
     @GetMapping("/find/{gymId}")
@@ -93,30 +90,22 @@ public class GymsController {
         System.out.println(keyword);
 
         QGyms gyms = QGyms.gyms;
-        // Gyms gyms2 = new Gyms();
-
+        
         BooleanBuilder builder = new BooleanBuilder();
         JPAQueryFactory query = new JPAQueryFactory(entity);
-
         List<Gyms> list = new ArrayList<>();
-
         // 동적
         // builder.and(gyms.gymId.eq(1L).and(gyms.gymLoc.eq("keyword")));
         // builder.and(gyms.gymLoc.like("%"+ keyword+"%"));
         // builder.and(gyms.gymId.eq(0L).and(gyms.gymLoc.like("%"+ keyword+"%")));
         builder.and(gyms.gymId.gt(0L).and(gyms.gymLoc.like("%" + keyword + "%")));
-
         query.from(gyms).where(builder).fetch().forEach(obj -> list.add((Gyms) obj));
-
         System.out.println(list.toString());
-
         return list;
-
         // // 정적
         // query.from(gyms)
         // .where(gyms.gymId.eq(5L).and(gyms.gymName.eq("asdf")))
         // .fetch()
-        // .forEach(arr -> list.add(arr));
-
+        // .forEach(arr -> list.add(arr));     
     }
 }

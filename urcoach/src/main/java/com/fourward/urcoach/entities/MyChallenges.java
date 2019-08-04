@@ -1,6 +1,8 @@
 package com.fourward.urcoach.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.stereotype.Component;
 
@@ -28,7 +33,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true, exclude = {"memberId","myExercises"})
 @Table(name = "my_challenges")
 public class MyChallenges implements Serializable{
 
@@ -40,10 +45,11 @@ public class MyChallenges implements Serializable{
     @Column(name = "my_challenge_name") private String myChallengeName;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "member_id") 
     private Members memberId;
 
-    @OneToOne
-    @JoinColumn(name = "my_exercise_id")
-    private MyExercises myExerciseId;
+    @OneToMany(mappedBy = "myChallengeId")
+    @JsonIgnore
+    private List<MyExercises> myExercises = new ArrayList<>();
 }

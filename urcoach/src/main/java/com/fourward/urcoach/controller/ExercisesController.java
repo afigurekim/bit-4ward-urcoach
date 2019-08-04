@@ -63,5 +63,4 @@ public class ExercisesController {
     public List<Exercises> findGroupByExerciseName() {
         return exRepo.findGroupByExerciseName();
     }
-    
 }
