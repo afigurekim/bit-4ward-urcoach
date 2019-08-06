@@ -62,7 +62,6 @@ public class MembersController {
 
     // 회원 정보 수정
     @PutMapping("/update/{id}")
-    @Transactional
     public HashMap<String, String> update(@PathVariable Long id, @RequestBody Members members) {
         HashMap<String ,String> map = new HashMap<>();
 

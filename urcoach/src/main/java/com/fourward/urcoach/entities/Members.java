@@ -10,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.stereotype.Component;
 
@@ -49,24 +52,28 @@ public class Members implements Serializable{
     @Column(name = "member_text") private String memberText;
     
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Reports> reports = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Meals> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Diaries> diaries = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Coaches> coaches = new ArrayList<>();
   
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<MemExercises> memExercises = new ArrayList<>();
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 
                     String memberHeight, String memberWeight, String memberPhoto, String memberText){
-
         this.memberEmail = memberEmail;
         this.memberPw = memberPw;
         this.memberType = memberType;

@@ -7,6 +7,8 @@ import {
 import NavBar from './containers/NavBar';
 import FooBar from './components/FooBar';
 
+
+
 const theme = {
   global: {
     colors: {
@@ -20,7 +22,10 @@ const theme = {
   },
 }
 
+
 class App extends Component {
+
+
   render() {
     return (
       <Grommet theme={theme} full>

@@ -10,13 +10,18 @@ import {
   ResponsiveContext,
   Text
 } from 'grommet';
+
+
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
 import Main from '../components/Main';
 import SignUp from './SignUp';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
-
+import CoachMatching from './CoachMatching';
+import CoachMatchingDetail from './CoachMatchingDetail';
+import GymMatchingDetail from './GymMatchingDetail'
+import GymMatching from './GymMatching'
 
 const HeadBar = (props) => (
   <Box
@@ -91,8 +96,8 @@ class NavBar extends Component {
                   </Box>
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
-                      { label: "코치 추천", href: "#" },
-                      { label: "휘트니스 추천", href: "#" }
+                      { label: "코치 추천", href: "/coachmatching" },
+                      { label: "휘트니스 추천", href: "/GymMatching" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -130,7 +135,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   챌린지
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="/ChallengeList">챌린지 목록</MenuA></Text>
@@ -159,10 +164,10 @@ class NavBar extends Component {
                                 </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">코치 추천</MenuA></Text>
+                                <Text><MenuA href="/coachmatching">코치 추천</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">휘트니스 추천</MenuA></Text>
+                                <Text><MenuA href="/GymMatching">피트니스 추천</MenuA></Text>
                               </Box>
                             </Box>
                           </Box>
@@ -175,7 +180,11 @@ class NavBar extends Component {
           <Route path="/" exact component={ Main } />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
+          <Route path="/coachmatching" component={CoachMatching} />
           <Route path="/challengelist" component={ChallengeList} />
+          <Route path="/CoachMatchingDetail/:coachId" component={CoachMatchingDetail} />
+          <Route path="/GymMatchingDetail" exact component={GymMatchingDetail}/>
+          <Route path="/GymMatching" exact component={GymMatching}/>
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
