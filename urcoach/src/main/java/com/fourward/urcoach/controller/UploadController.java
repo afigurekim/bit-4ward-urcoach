@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * FileUploadController
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> DH
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/upload")
@@ -25,7 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
     public String handleUpload(@RequestParam("file") MultipartFile uploadFile) throws Exception {
         String newFileName = "";
         if(uploadFile != null) {
+<<<<<<< HEAD
             String filePath = "C:/Users/YONG/newdeal/project/team_Project/frontend/public/user-image";
+=======
+            String filePath = "C:/Users/locod/bit-4ward-urcoach/workspace/frontend/public/user-image";
+>>>>>>> DH
             File fileDir = new File(filePath);
             if(fileDir.exists() == false) {
                 fileDir.mkdirs();

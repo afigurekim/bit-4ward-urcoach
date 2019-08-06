@@ -26,10 +26,13 @@ public class ExercisesController {
 
 <<<<<<< HEAD
     @Autowired private ExercisesRepository exRepo;
+<<<<<<< HEAD
 =======
     @Autowired
     private ExercisesRepository exRepo;
 >>>>>>> origin/YJ
+=======
+>>>>>>> DH
 
     // 운동 루틴 데이터 입력
     @PostMapping("/insert")

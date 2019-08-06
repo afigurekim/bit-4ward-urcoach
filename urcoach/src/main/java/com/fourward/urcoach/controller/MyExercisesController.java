@@ -1,17 +1,25 @@
 package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
 import com.fourward.urcoach.entities.Exercises;
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.entities.MyChallenges;
+=======
+import java.util.Optional;
+
+>>>>>>> DH
 import com.fourward.urcoach.entities.MyExercises;
 import com.fourward.urcoach.repositories.MyExercisesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+>>>>>>> DH
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +32,10 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * MyExercisesController
  */
+<<<<<<< HEAD
 @CrossOrigin(origins = "http://localhost:3000")
+=======
+>>>>>>> DH
 @RestController
 @RequestMapping("/MyExercise")
 public class MyExercisesController {
@@ -58,6 +69,7 @@ public class MyExercisesController {
         tempMem.setMyExerciseTime(myExercise.getMyExerciseTime());
         tempMem.setMyExerciseCal(myExercise.getMyExerciseCal());
         tempMem.setMyExerciseComplete(myExercise.getMyExerciseComplete());
+<<<<<<< HEAD
         repo.save(tempMem);
         map.put("RESULT", "멤버 운동 수정 성공");
         return map;
@@ -79,6 +91,9 @@ public class MyExercisesController {
         tempMem.setMyExerciseComplete(myExercise.getMyExerciseComplete());
         tempMem.setMyExerciseDate(myExercise.getMyExerciseDate());
 
+=======
+        tempMem.setMyExerciseOrder(myExercise.getMyExerciseOrder());
+>>>>>>> DH
         repo.save(tempMem);
         map.put("RESULT", "멤버 운동 수정 성공");
         return map;
@@ -91,6 +106,7 @@ public class MyExercisesController {
         map.put("RESULT", "멤버 운동 삭제 성공");
         return map;
     }
+<<<<<<< HEAD
 
     // 커스터마이징 운동 루틴 저장
     // @PostMapping("/insert")
@@ -147,4 +163,6 @@ public class MyExercisesController {
         System.out.println("myChallengeId : " + myChallengeId);
         return repo.findByMyChallengeId(myChallengeId);
     }
+=======
+>>>>>>> DH
 }

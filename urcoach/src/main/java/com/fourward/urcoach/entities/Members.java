@@ -34,7 +34,11 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
+<<<<<<< HEAD
 @ToString(exclude = "coaches")
+=======
+@ToString(exclude = "diaries")
+>>>>>>> DH
 @Table(name = "members")
 public class Members implements Serializable{
 
@@ -71,6 +75,7 @@ public class Members implements Serializable{
   
     @OneToMany(mappedBy = "memberId")
     @JsonIgnore
+<<<<<<< HEAD
     private List<MemExercises> memExercises = new ArrayList<>();
 =======
     @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
@@ -97,6 +102,9 @@ public class Members implements Serializable{
     @JsonIgnore
     private List<MyChallenges> myChallenges = new ArrayList<>();
 >>>>>>> origin/YJ
+=======
+    private List<MyExercises> memExercises = new ArrayList<>();
+>>>>>>> DH
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 

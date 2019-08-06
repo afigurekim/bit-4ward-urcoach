@@ -1,5 +1,6 @@
 spring:
 <<<<<<< HEAD
+<<<<<<< HEAD
    mvc:
        view:
            prefix: /
@@ -16,11 +17,14 @@ spring:
            hibernate:
                dialect: org.hibernate.dialect.MariaDBDialect
 =======
+=======
+>>>>>>> DH
     mvc:
         view:
             prefix: /
             suffix: .html
     datasource:
+<<<<<<< HEAD
     # 내꺼 url
         url: jdbc:mariadb://fourwarddb.cowfpof74cuw.ap-northeast-2.rds.amazonaws.com:3306/fourwarddb?userUnicode=true&characterEncoding=UTF-8
         username: fourwarddb
@@ -29,10 +33,21 @@ spring:
     
     jpa:
         
+=======
+        url: jdbc:mariadb://localhost:3306/mariadb
+        username: mariadb
+        password: mariadb
+        sql-script-encoding: UTF-8
+    jpa:
+>>>>>>> DH
         hibernate:
             ddl-auto: update
         properties:
             hibernate:
+<<<<<<< HEAD
                 dialect: org.hibernate.dialect.MariaDBDialect
         
 >>>>>>> origin/YJ
+=======
+                dialect: org.hibernate.dialect.MariaDBDialect
+>>>>>>> DH

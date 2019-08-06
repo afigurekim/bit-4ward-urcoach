@@ -1,16 +1,17 @@
 package com.fourward.urcoach.controller;
 
 import java.util.HashMap;
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
 
 import com.fourward.urcoach.entities.Coaches;
+<<<<<<< HEAD
 import com.fourward.urcoach.entities.Gyms;
+=======
+>>>>>>> DH
 import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.CoachesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -29,11 +30,15 @@ import org.springframework.web.bind.annotation.RestController;
 >>>>>>> origin/EJ
 =======
 >>>>>>> origin/YJ
+=======
+>>>>>>> DH
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /**
  * CoachController
@@ -47,7 +52,15 @@ public class CoachesController {
  @CrossOrigin(origins = "http://localhost:3000")
  @RestController
  @RequestMapping("/coaches")
+=======
+/**
+ * CoachController
+ */
+@RestController
+@RequestMapping("/coach")
+>>>>>>> DH
 public class CoachesController {
+<<<<<<< .merge_file_a06224
     @Autowired CoachesRepository repo;
 
     // C
@@ -67,6 +80,7 @@ public class CoachesController {
         return coaches;
     }
 
+<<<<<<< HEAD
 
     // //R(2):pagination
     // @GetMapping("/find")
@@ -88,10 +102,22 @@ public class CoachesController {
         return list;
     }
 >>>>>>> origin/EJ
+=======
+    //R(2)
+    // @GetMapping()
+    // public Iterable<Coaches> findAll(){
+    //     Iterable<Coaches> entities = repo.findAll();
+
+    //     List<Coaches> list = new ArrayList<>();
+    //     return list;
+
+    // }
+>>>>>>> DH
 
 <<<<<<< HEAD
     @Autowired private CoachesRepository coaRepo;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @PostMapping("/insert")
     public HashMap<String ,String> insertCoach(@RequestBody Coaches coaches,
@@ -207,3 +233,22 @@ public class CoachesController {
 
 }
 >>>>>>> origin/YJ
+=======
+=======
+>>>>>>> .merge_file_a15884
+
+    @Autowired private CoachesRepository coaRepo;
+
+    @PostMapping("/insert")
+    public HashMap<String ,String> insertCoach(@RequestBody Coaches coaches,
+                                                @RequestParam("memberId") Members memberId) {
+        System.out.println("coach insert 진입 : " + coaches);
+        HashMap<String,String> map = new HashMap<>();
+
+        coaches.setMemberId(memberId);
+        coaRepo.save(coaches);
+        map.put("result", "Coach insert Success");
+        return map;
+    }
+}
+>>>>>>> DH

@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Heading,
-  Image,
   Layer,
   Menu,
   ResponsiveContext,
@@ -15,10 +14,11 @@ import {
 
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
-import Main from '../components/Main';
+import Main from '../containers/Main';
 import SignUp from './SignUp';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
+<<<<<<< HEAD
 import CoachMatching from './CoachMatching';
 import CoachMatchingDetail from './CoachMatchingDetail';
 import GymMatchingDetail from './GymMatchingDetail'
@@ -39,12 +39,15 @@ import MyChallengeName from './MyChallenge/MyChallengeName';
 import MyChallengeList from './MyChallenge/MyChallengeList';
 import MyChallengeExerciseInsert from './MyChallenge/MyChallengeExerciseInsert';
 import MyChallengeExerciseList from './MyChallenge/MyChallengeExerciseList';
+=======
+>>>>>>> DH
 import DiaryNew from './DiaryNew';
 import DiaryList from './DiaryList';
 import DiaryRead from './DiaryRead';
 import DiaryEdit from './DiaryEdit';
 import MyExerciseList from './MyExerciseList';
 import MyExerciseRead from './MyExerciseRead';
+<<<<<<< HEAD
 import PhotoUpload from '../components/PhotoUpload';
 import ReportMain from './ReportMain';
 import ReportExercise from './ReportExercise';
@@ -57,6 +60,11 @@ import CoachInForm from './CoachInForm';
 
 // 로그인했을 때 로그인, 회원가입 버튼 --> 로그아웃, 프로필버튼으로 수정 --> 콜백으로 해야함
 >>>>>>> origin/YJ
+=======
+import ReportMain from './ReportMain';
+import ReportExercise from './ReportExercise';
+import ReportFood from './ReportFood';
+>>>>>>> DH
 
 const HeadBar = (props) => (
   <Box
@@ -85,6 +93,7 @@ const MenuA = (props) => {
 class NavBar extends Component {
   state = {
     showMenu: false,
+<<<<<<< HEAD
     imageIsReady: false,
     // session에 memberId 찾기
     check: sessionStorage.getItem('memberEmail')
@@ -105,6 +114,9 @@ class NavBar extends Component {
       check: false
     })
     window.location.assign("/")
+=======
+    imageIsReady: false
+>>>>>>> DH
   }
 
   componentDidMount() {
@@ -127,7 +139,10 @@ class NavBar extends Component {
   render() {
     const { showMenu } = this.state;
     const { imageIsReady }  = this.state;
+<<<<<<< HEAD
 
+=======
+>>>>>>> DH
     if (!imageIsReady) {
       return null;
     } else {
@@ -158,8 +173,13 @@ class NavBar extends Component {
                   </Box>
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
+<<<<<<< HEAD
                       { label: "데일리 리포트", href: "#" },
                       { label: "운동 다이어리", href: "/diary/new" }
+=======
+                      { label: "데일리 리포트", href: "/report/main" },
+                      { label: "운동 다이어리", href: "/diary/list" }
+>>>>>>> DH
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -186,6 +206,7 @@ class NavBar extends Component {
                       }}
                     </Menu>
                   </Box>
+<<<<<<< HEAD
                   {this.state.check ? 
                     <Box direction="row" align="center" gap="small" pad="xsmall">
                       <Button primary color="dark-2" label="마이페이지" href="/MyPage" />
@@ -197,6 +218,12 @@ class NavBar extends Component {
                       <Button primary color="light-2" label="회원가입" href="/SignUpType" />
                     </Box>
                   }
+=======
+                  <Box direction="row" align="center" gap="small" pad="xsmall">
+                    <Button primary color="dark-2" label="로그인" href="/login"/>
+                    <Button primary color="light-2" label="회원가입" href="/signup" />
+                  </Box>
+>>>>>>> DH
                 </Box>
               ) : (
                   <Box align="end" gap="xsmall" pad="xsmall">
@@ -211,6 +238,7 @@ class NavBar extends Component {
                             <a href="/">
                               <img src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
                             </a>
+<<<<<<< HEAD
 
                             {this.state.check ? 
                               <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
@@ -224,6 +252,12 @@ class NavBar extends Component {
                               </Box>
                             }
 
+=======
+                            <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
+                              <Button primary color="dark-2" label="로그인" href="/login" />
+                              <Button primary color="light-2" label="회원가입" href="/signup"/>
+                            </Box>
+>>>>>>> DH
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
@@ -244,10 +278,14 @@ class NavBar extends Component {
                                 </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">데일리 리포트</MenuA></Text>
+                                <Text><MenuA href="/report/main">데일리 리포트</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
+<<<<<<< HEAD
                                 <Text><MenuA href="/diary/new">운동 다이어리</MenuA></Text>
+=======
+                                <Text><MenuA href="/diary/list">운동 다이어리</MenuA></Text>
+>>>>>>> DH
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -275,6 +313,7 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
+<<<<<<< HEAD
           <Route path="/SignUpType" component={SignUpType} />
           <Route path="/login" component={Login} />
           <Route path="/coachmatching" component={CoachMatching} />
@@ -298,11 +337,24 @@ class NavBar extends Component {
           <Route path="/diary/read" exact component={DiaryRead} />
           <Route path="/diary/edit" exact component={DiaryEdit} />
           <Route path="/photoupload" exact component={PhotoUpload} />              
+=======
+          <Route path="/signup" exact component={SignUp} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/challengelist" exact component={ChallengeList} />
+          <Route path="/diary/new" exact component={DiaryNew} />
+          <Route path="/diary/new/:date" exact component={DiaryNew} />
+          <Route path="/diary/list" exact component={DiaryList} />
+          <Route path="/diary/read" exact component={DiaryRead} />
+          <Route path="/diary/read/:date" exact component={DiaryRead} />
+          <Route path="/diary/edit" exact component={DiaryEdit} />
+          <Route path="/diary/edit/:date" exact component={DiaryEdit} />
+>>>>>>> DH
           <Route path="/myexercise/list" exact component={MyExerciseList} />
           <Route path="/myexercise/read" exact component={MyExerciseRead} />
           <Route path="/report/main" exact component={ReportMain} />
           <Route path="/report/exercise" exact component={ReportExercise} />
           <Route path="/report/food" exact component={ReportFood} />
+<<<<<<< HEAD
           <Route path="/coachmatching" component={CoachMatching} />
           <Route path="/CoachMatchingDetail/:coachId/:gymId" component={CoachMatchingDetail} />
           <Route path="/GymMatching" exact component={GymMatching}/>
@@ -310,6 +362,8 @@ class NavBar extends Component {
           <Route path="/CoachInForm" component={CoachInForm}/>
 
 >>>>>>> origin/YJ
+=======
+>>>>>>> DH
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
