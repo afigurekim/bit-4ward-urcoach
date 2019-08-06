@@ -3,10 +3,7 @@ package com.fourward.urcoach.controller;
 import java.util.HashMap;
 
 import com.fourward.urcoach.entities.Challenges;
-import com.fourward.urcoach.entities.Exercises;
 import com.fourward.urcoach.repositories.ChallengesRepository;
-import com.fourward.urcoach.repositories.CoachesRepository;
-import com.fourward.urcoach.repositories.ExercisesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChallengesController {
     
     @Autowired private ChallengesRepository chRepo;
-    @Autowired private CoachesRepository coachRepo;
 
     //챌린지 이름 내용 넣기
     @PostMapping("/insert")

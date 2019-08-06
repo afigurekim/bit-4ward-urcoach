@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
@@ -30,7 +32,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "diaries")
 @Table(name = "members")
 public class Members implements Serializable{
 
@@ -49,18 +51,23 @@ public class Members implements Serializable{
     @Column(name = "member_text") private String memberText;
     
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Reports> reports = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Meals> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Diaries> diaries = new ArrayList<>();
 
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<Coaches> coaches = new ArrayList<>();
   
     @OneToMany(mappedBy = "memberId")
+    @JsonIgnore
     private List<MyExercises> memExercises = new ArrayList<>();
     
     @Builder

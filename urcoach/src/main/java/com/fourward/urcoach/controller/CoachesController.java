@@ -1,34 +1,25 @@
 package com.fourward.urcoach.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
 
 import com.fourward.urcoach.entities.Coaches;
+import com.fourward.urcoach.entities.Members;
 import com.fourward.urcoach.repositories.CoachesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-
-
-
-
- @CrossOrigin(origins = "",maxAge = 3600)
- @RestController
- @RequestMapping("/coaches")
+/**
+ * CoachController
+ */
+@RestController
+@RequestMapping("/coach")
 public class CoachesController {
+<<<<<<< .merge_file_a06224
     @Autowired CoachesRepository repo;
 
     //C:코치정보 입력
@@ -58,12 +49,20 @@ public class CoachesController {
     // }
 
 
+=======
+>>>>>>> .merge_file_a15884
 
+    @Autowired private CoachesRepository coaRepo;
 
+    @PostMapping("/insert")
+    public HashMap<String ,String> insertCoach(@RequestBody Coaches coaches,
+                                                @RequestParam("memberId") Members memberId) {
+        System.out.println("coach insert 진입 : " + coaches);
+        HashMap<String,String> map = new HashMap<>();
 
-  
+        coaches.setMemberId(memberId);
+        coaRepo.save(coaches);
+        map.put("result", "Coach insert Success");
+        return map;
     }
-    
-
-    
-    
+}

@@ -14,7 +14,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean
+    /**
+	 *
+	 */
+	
+	private static final String MY_REST_API = "My REST API";
+	@Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -26,7 +31,7 @@ public class SwaggerConfig {
     }
     private ApiInfo apiInfo() {
         ApiInfo apiInfo = new ApiInfo(
-          "My REST API",
+          MY_REST_API,
           "Some custom description of API.",
           "API TOS",
           "Terms of service",

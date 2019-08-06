@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Heading,
-  Image,
   Layer,
   Menu,
   ResponsiveContext,
@@ -12,7 +11,7 @@ import {
 } from 'grommet';
 import { FormClose, Menu as MenuIcon } from 'grommet-icons';
 import logo from '../assets/logo.png';
-import Main from '../components/Main';
+import Main from '../containers/Main';
 import SignUp from './SignUp';
 import Login from './Login';
 import ChallengeList from './ChallengeList';
@@ -22,8 +21,9 @@ import DiaryRead from './DiaryRead';
 import DiaryEdit from './DiaryEdit';
 import MyExerciseList from './MyExerciseList';
 import MyExerciseRead from './MyExerciseRead';
-import PhotoUpload from '../components/PhotoUpload';
-
+import ReportMain from './ReportMain';
+import ReportExercise from './ReportExercise';
+import ReportFood from './ReportFood';
 
 const HeadBar = (props) => (
   <Box
@@ -52,17 +52,39 @@ const MenuA = (props) => {
 class NavBar extends Component {
   state = {
     showMenu: false,
+    imageIsReady: false
+  }
+
+  componentDidMount() {
+    const img  = new Image();
+    img.src = logo;
+
+    img.onload = () => {
+      this.setState({ imageIsReady: true });
+    }
+  }
+
+  shouldComponentUpdate(nextState) {
+    if (this.state.showMenu === nextState.showMenu) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   render() {
     const { showMenu } = this.state;
+    const { imageIsReady }  = this.state;
+    if (!imageIsReady) {
+      return null;
+    } else {
     return (
       <ResponsiveContext.Consumer>
         {size => (
           <BRouter>
           <HeadBar>
             <a href="/">
-              <Image src={logo} alt="URCoach" style={{ height: 30 }} />
+              <img src={logo} alt="URCoach" style={{ height: 30 }} />
             </a>
               {(size !== 'small') ? (
                 <Box fill="horizontal" justify="evenly" direction="row">
@@ -83,8 +105,8 @@ class NavBar extends Component {
                   </Box>
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
-                      { label: "데일리 리포트", href: "#" },
-                      { label: "운동 다이어리", href: "/diary/new" }
+                      { label: "데일리 리포트", href: "/report/main" },
+                      { label: "운동 다이어리", href: "/diary/list" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -127,7 +149,7 @@ class NavBar extends Component {
                         <Box fill background="brand" align="center" justify="center">
                           <Box direction="column" pad="large">
                             <a href="/">
-                              <Image src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
+                              <img src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
                             </a>
                             <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
                               <Button primary color="dark-2" label="로그인" href="/login" />
@@ -137,7 +159,7 @@ class NavBar extends Component {
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
                                   챌린지
-                                        </Heading>
+                                </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Text><MenuA href="/ChallengeList">챌린지 목록</MenuA></Text>
@@ -153,10 +175,10 @@ class NavBar extends Component {
                                 </Heading>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">데일리 리포트</MenuA></Text>
+                                <Text><MenuA href="/report/main">데일리 리포트</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="/diary/new">운동 다이어리</MenuA></Text>
+                                <Text><MenuA href="/diary/list">운동 다이어리</MenuA></Text>
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -184,16 +206,21 @@ class NavBar extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/challengelist" exact component={ChallengeList} />
           <Route path="/diary/new" exact component={DiaryNew} />
+          <Route path="/diary/new/:date" exact component={DiaryNew} />
           <Route path="/diary/list" exact component={DiaryList} />
           <Route path="/diary/read" exact component={DiaryRead} />
+          <Route path="/diary/read/:date" exact component={DiaryRead} />
           <Route path="/diary/edit" exact component={DiaryEdit} />
-          <Route path="/photoupload" exact component={PhotoUpload} />
+          <Route path="/diary/edit/:date" exact component={DiaryEdit} />
           <Route path="/myexercise/list" exact component={MyExerciseList} />
           <Route path="/myexercise/read" exact component={MyExerciseRead} />
+          <Route path="/report/main" exact component={ReportMain} />
+          <Route path="/report/exercise" exact component={ReportExercise} />
+          <Route path="/report/food" exact component={ReportFood} />
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
-    );
+    );}
   }
 }
 

@@ -98,3 +98,4 @@
 [0718/121418.940:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0718/121418.941:ERROR:crash_report_database_win.cc(469)] failed to stat report
 [0718/121418.942:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[0729/115006.893:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
