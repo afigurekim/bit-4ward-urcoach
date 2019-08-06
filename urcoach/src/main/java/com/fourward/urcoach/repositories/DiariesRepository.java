@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DiariesRepository extends JpaRepository<Diaries, Long> {
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/YJ
     public boolean existsByDiaryDate(String diaryDate);
     public Diaries findByDiaryDate(String diaryDate);
 }

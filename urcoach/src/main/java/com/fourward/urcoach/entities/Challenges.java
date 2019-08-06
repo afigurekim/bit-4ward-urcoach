@@ -4,14 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -44,8 +43,13 @@ public class Challenges implements Serializable{
     @Column(name = "challenge_name", nullable = false, unique = true) private String challengeName;
     @Column(name = "challenge_text") private String challengeText;
     @Column(name = "challenge_photo") private String challengePhoto;
+<<<<<<< HEAD
     
     @OneToMany(mappedBy = "challengeId", orphanRemoval = true , fetch = FetchType.LAZY)
+=======
+
+    @OneToMany(mappedBy = "challengeId", orphanRemoval = true , fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+>>>>>>> origin/YJ
     private List<Exercises> Exercises = new ArrayList<>();
 
     @Builder

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "coaches")
 @Table(name = "members")
 public class Members implements Serializable{
 
@@ -42,15 +43,16 @@ public class Members implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id") private Long memberId;
-    @Column(name = "member_type", nullable = false) private Integer memberType;
+    @Column(name = "member_type", nullable = false) private Integer                memberType;
     @Column(name = "member_email", nullable = false, unique = true) private String memberEmail;
-    @Column(name = "member_pw", nullable = false)private String memberPw;
-    @Column(name = "member_name", nullable = false) private String memberName;
-    @Column(name = "member_height") private String memberHeight;
-    @Column(name = "member_weight") private String memberWeight;
-    @Column(name = "member_photo") private String memberPhoto;
-    @Column(name = "member_text") private String memberText;
+    @Column(name = "member_pw", nullable = false)private String                    memberPw;
+    @Column(name = "member_name", nullable = false) private String                 memberName;
+    @Column(name = "member_height") private String                                 memberHeight;
+    @Column(name = "member_weight") private String                                 memberWeight;
+    @Column(name = "member_photo") private String                                  memberPhoto;
+    @Column(name = "member_text") private String                                   memberText;
     
+<<<<<<< HEAD
     @OneToMany(mappedBy = "memberId")
     @JsonIgnore
     private List<Reports> reports = new ArrayList<>();
@@ -70,6 +72,31 @@ public class Members implements Serializable{
     @OneToMany(mappedBy = "memberId")
     @JsonIgnore
     private List<MemExercises> memExercises = new ArrayList<>();
+=======
+    @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Reports> reports = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Meals> meals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberId",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Diaries> diaries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Coaches> coaches = new ArrayList<>();
+  
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<MyExercises> myExercises = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<MyChallenges> myChallenges = new ArrayList<>();
+>>>>>>> origin/YJ
     
     @Builder
     private Members(String memberEmail, String memberPw, Integer memberType, String memberName, 

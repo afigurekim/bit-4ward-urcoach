@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as BRouter, Route} from 'react-router-dom';
+<<<<<<< HEAD
 import {
   Box,
   Button,
@@ -22,6 +23,40 @@ import CoachMatching from './CoachMatching';
 import CoachMatchingDetail from './CoachMatchingDetail';
 import GymMatchingDetail from './GymMatchingDetail'
 import GymMatching from './GymMatching'
+=======
+import {Box,Button,Heading,Layer,Menu,ResponsiveContext,Text} from 'grommet';
+import { FormClose, Menu as MenuIcon } from 'grommet-icons';
+import logo from '../assets/logo.png';
+import Main from '../components/Main';
+import SignUpType from './Member/SignUpType';
+import Login from './Member/Login';
+import SignUp from './Member/SignUp';
+import MyPage from './Member/MyPage';
+import ChallengeList from './Challenge/ChallengeList';
+import ExerciseList from './Challenge/ExerciseList';
+import MyChallengeEnter from './MyChallenge/MyChallengeEnter';
+import MyChallengeName from './MyChallenge/MyChallengeName';
+import MyChallengeList from './MyChallenge/MyChallengeList';
+import MyChallengeExerciseInsert from './MyChallenge/MyChallengeExerciseInsert';
+import MyChallengeExerciseList from './MyChallenge/MyChallengeExerciseList';
+import DiaryNew from './DiaryNew';
+import DiaryList from './DiaryList';
+import DiaryRead from './DiaryRead';
+import DiaryEdit from './DiaryEdit';
+import MyExerciseList from './MyExerciseList';
+import MyExerciseRead from './MyExerciseRead';
+import PhotoUpload from '../components/PhotoUpload';
+import ReportMain from './ReportMain';
+import ReportExercise from './ReportExercise';
+import ReportFood from './ReportFood';
+import CoachMatching from './CoachMatching';
+import CoachMatchingDetail from './CoachMatchingDetail';
+import GymMatchingDetail from './GymMatchingDetail';
+import GymMatching from './GymMatching';
+import CoachInForm from './CoachInForm';
+
+// 로그인했을 때 로그인, 회원가입 버튼 --> 로그아웃, 프로필버튼으로 수정 --> 콜백으로 해야함
+>>>>>>> origin/YJ
 
 const HeadBar = (props) => (
   <Box
@@ -50,24 +85,66 @@ const MenuA = (props) => {
 class NavBar extends Component {
   state = {
     showMenu: false,
+    imageIsReady: false,
+    // session에 memberId 찾기
+    check: sessionStorage.getItem('memberEmail')
+  }
+
+  // 로그인 검사 , session 확인
+  isLoginCheck = (props) => {
+    sessionStorage.getItem('memberEmail')
+    this.setState({
+      check: true
+    })
+    alert('로그인 체크')
+  }
+  // 로그아웃 정의
+  isLogout = (props) => {
+    sessionStorage.clear();
+    this.setState({
+      check: false
+    })
+    window.location.assign("/")
+  }
+
+  componentDidMount() {
+    const img  = new Image();
+    img.src = logo;
+
+    img.onload = () => {
+      this.setState({ imageIsReady: true });
+    }
+  }
+
+  shouldComponentUpdate(nextState) {
+    if (this.state.showMenu === nextState.showMenu) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   render() {
     const { showMenu } = this.state;
+    const { imageIsReady }  = this.state;
+
+    if (!imageIsReady) {
+      return null;
+    } else {
     return (
       <ResponsiveContext.Consumer>
         {size => (
           <BRouter>
           <HeadBar>
             <a href="/">
-              <Image src={logo} alt="URCoach" style={{ height: 30 }} />
+              <img src={logo} alt="URCoach" style={{ height: 30 }} />
             </a>
               {(size !== 'small') ? (
                 <Box fill="horizontal" justify="evenly" direction="row">
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
                       { label: "챌린지 목록", href: "/ChallengeList" },
-                      { label: "내 챌린지", href: "#" }
+                      { label: "내 챌린지", href: "/MyChallengeEnter" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -82,7 +159,7 @@ class NavBar extends Component {
                   <Box pad="xsmall" direction="row" align="center">
                     <Menu pad="xsmall" gap="small" plain items={[
                       { label: "데일리 리포트", href: "#" },
-                      { label: "운동 다이어리", href: "#" }
+                      { label: "운동 다이어리", href: "/diary/new" }
                     ]}>
                       {({ drop, hover }) => {
                         const color = hover && !drop ? "#00efd1" : undefined;
@@ -109,10 +186,17 @@ class NavBar extends Component {
                       }}
                     </Menu>
                   </Box>
-                  <Box direction="row" align="center" gap="small" pad="xsmall">
-                    <Button primary color="#00acea" label="로그인" href="/login"/>
-                    <Button primary color="#fedb41" label="회원가입" href="/signup" />
-                  </Box>
+                  {this.state.check ? 
+                    <Box direction="row" align="center" gap="small" pad="xsmall">
+                      <Button primary color="dark-2" label="마이페이지" href="/MyPage" />
+                      <Button primary color="light-2" label="로그아웃" onClick={this.isLogout}/>
+                    </Box>
+                    :  
+                    <Box direction="row" align="center" gap="small" pad="xsmall">
+                      <Button primary color="dark-2" label="로그인" href="/login"/>
+                      <Button primary color="light-2" label="회원가입" href="/SignUpType" />
+                    </Box>
+                  }
                 </Box>
               ) : (
                   <Box align="end" gap="xsmall" pad="xsmall">
@@ -125,12 +209,21 @@ class NavBar extends Component {
                         <Box fill background="brand" align="center" justify="center">
                           <Box direction="column" pad="large">
                             <a href="/">
-                              <Image src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
+                              <img src={logo} alt="URCoach" style={{ height: 50 }} pad={{ vertical: "large" }} />
                             </a>
-                            <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
-                              <Button primary color="#00acea" label="로그인" href="/login" />
-                              <Button primary color="#fedb41" label="회원가입" href="/signup"/>
-                            </Box>
+
+                            {this.state.check ? 
+                              <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
+                                <Button primary color="dark-2" label="마이페이지" href="/MyPage" />
+                                <Button primary color="light-2" label="로그아웃" href="/" onClick={this.isLogout}/>
+                              </Box>
+                              :
+                              <Box direction="row" justify="center" gap="large" pad={{ vertical: "large" }}>
+                                <Button primary color="dark-2" label="로그인" href="/login"/>
+                                <Button primary color="light-2" label="회원가입" href="/SignUpType" />
+                              </Box>
+                            }
+
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
                               <Box tag="li" pad="small" direction="row" justify="between">
                                 <Heading level="4" size="small">
@@ -141,7 +234,7 @@ class NavBar extends Component {
                                 <Text><MenuA href="/ChallengeList">챌린지 목록</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">내 챌린지</MenuA></Text>
+                                <Text><MenuA href="/MyChallengeEnter">내 챌린지</MenuA></Text>
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -154,7 +247,7 @@ class NavBar extends Component {
                                 <Text><MenuA href="#">데일리 리포트</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
-                                <Text><MenuA href="#">운동 다이어리</MenuA></Text>
+                                <Text><MenuA href="/diary/new">운동 다이어리</MenuA></Text>
                               </Box>
                             </Box>
                             <Box tag="ul" justify="start" alignContent="start" alignSelf="start" direction="column">
@@ -167,7 +260,11 @@ class NavBar extends Component {
                                 <Text><MenuA href="/coachmatching">코치 추천</MenuA></Text>
                               </Box>
                               <Box tag="li" pad="small" direction="row" justify="between">
+<<<<<<< HEAD
                                 <Text><MenuA href="/GymMatching">피트니스 추천</MenuA></Text>
+=======
+                                <Text><MenuA href="/GymMatching">휘트니스 추천</MenuA></Text>
+>>>>>>> origin/YJ
                               </Box>
                             </Box>
                           </Box>
@@ -178,17 +275,45 @@ class NavBar extends Component {
                 )}
           </HeadBar>
           <Route path="/" exact component={ Main } />
-          <Route path="/signup" component={SignUp} />
+          <Route path="/SignUpType" component={SignUpType} />
           <Route path="/login" component={Login} />
           <Route path="/coachmatching" component={CoachMatching} />
           <Route path="/challengelist" component={ChallengeList} />
+<<<<<<< HEAD
           <Route path="/CoachMatchingDetail/:coachId" component={CoachMatchingDetail} />
           <Route path="/GymMatchingDetail" exact component={GymMatchingDetail}/>
           <Route path="/GymMatching" exact component={GymMatching}/>
+=======
+          <Route path="/exerciselist/:challengeId/:challengeName" component={ExerciseList} />
+          <Route path="/MyChallengeEnter" component={MyChallengeEnter} />
+          <Route path="/MyChallengeName" component={MyChallengeName} />
+          <Route path="/MyChallengeList" component={MyChallengeList} />
+          <Route path="/MyChallengeExerciseInsert/:myChallengeId" component={MyChallengeExerciseInsert} />
+          <Route path="/MyChallengeExerciseList/:myChallengeId/:myChallengeName/:exerciseId" component={MyChallengeExerciseList} />
+          <Route path="/SignUp" exact component={SignUp} />
+          <Route path="/SignUp/:memberType" exact component={SignUp} />
+          <Route path="/MyPage" component={MyPage} />
+          <Route path="/diary/new" exact component={DiaryNew} />
+          <Route path="/diary/list" exact component={DiaryList} />
+          <Route path="/diary/read" exact component={DiaryRead} />
+          <Route path="/diary/edit" exact component={DiaryEdit} />
+          <Route path="/photoupload" exact component={PhotoUpload} />              
+          <Route path="/myexercise/list" exact component={MyExerciseList} />
+          <Route path="/myexercise/read" exact component={MyExerciseRead} />
+          <Route path="/report/main" exact component={ReportMain} />
+          <Route path="/report/exercise" exact component={ReportExercise} />
+          <Route path="/report/food" exact component={ReportFood} />
+          <Route path="/coachmatching" component={CoachMatching} />
+          <Route path="/CoachMatchingDetail/:coachId/:gymId" component={CoachMatchingDetail} />
+          <Route path="/GymMatching" exact component={GymMatching}/>
+          <Route path="/GymMatchingDetail/:gymId" exact component={GymMatchingDetail}/>
+          <Route path="/CoachInForm" component={CoachInForm}/>
+
+>>>>>>> origin/YJ
           </BRouter>
         )}
       </ResponsiveContext.Consumer>
-    );
+    );}
   }
 }
 

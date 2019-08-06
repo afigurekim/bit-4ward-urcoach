@@ -55,8 +55,17 @@ public class Coaches implements Serializable {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "member_id") private Members memberId;
+<<<<<<< HEAD
     @Builder
     public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto1, String coachPhoto2, String coachName,
+=======
+
+    @ManyToOne
+    @JoinColumn(name = "gym_id") private Gyms gymId;
+
+    @Builder
+    public Coaches(Long coachId,  String coachLoc, String coachInfo, String coachPhoto1,String coachPhoto2, String coachName,
+>>>>>>> origin/YJ
             String coachLink, String coachResume1, String coachResume2, String coachResume3,String coachResume4,String coachResume5) {
         this.coachId = coachId;
         this.coachLoc = coachLoc;

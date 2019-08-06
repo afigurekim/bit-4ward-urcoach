@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MealsRepository extends JpaRepository<Meals, Long> {
 
-    
+    public Iterable<Meals> findByMealDate(String mealDate);
 }
