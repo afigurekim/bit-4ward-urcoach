@@ -17,16 +17,11 @@ class ExerciseList extends Component {
 }
 
   componentDidMount() {
-    console.log("exerciselist componentDidMount 접근");
     const {challengeId, challengeName } = this.props.match.params;
-    console.log("challengeId : " + challengeId )
-    console.log("challengeName : " + challengeName )
 
     axios
-      .get(`http://localhost:8080/exercises/findByChallengeId/${challengeId}`)
+      .get(`http://52.79.235.166/exercises/findByChallengeId/${challengeId}`)
       .then(res => {
-        console.log("axios challengeId : " + challengeId)
-        console.log("axios challengeName : " + challengeName)
 
         const exercises = res.data
 
@@ -57,12 +52,12 @@ class ExerciseList extends Component {
 
     let headers={
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
     axios
-      .post(`http://localhost:8080/MyExercise/insert2/${memberId}/${exerciseId}`,JSON.stringify(data),{headers: headers})
+      .post(`http://52.79.235.166/MyExercise/insert2/${memberId}/${exerciseId}`,JSON.stringify(data),{headers: headers})
       .then(res => {
-        console.log(res.data)
         alert("도전 완료 성공")
       })
       .catch(e => {
@@ -99,7 +94,7 @@ class ExerciseList extends Component {
                               <Heading level="3"> {exercise.exerciseName} </Heading>
                             <Form onSubmit={this.exercised(exercise.exerciseId, exercise.exerciseSet, exercise.exerciseCount)} pad="0" margin="0">
                               {/* 세트, 카운트 */}
-                                <Box direction="row" gap="small" pad="0" margin="0">
+                                <Box direction="row" gap="medium" pad="0" margin="0">
                                     <Text textAlign="center">{exercise.exerciseSet}</Text>
                                     <Text textAlign="center">{exercise.exerciseCount}</Text>
                                 </Box>

@@ -16,25 +16,24 @@ class MyPage extends Component {
       memberType:'',
       typeText: '',
       member: [],
-      selected: props.selected
     }
+
+    this.coachFormExists = this.coachFormExists.bind(this)
+    this.whichComp = this.whichComp.bind(this)
+
   }
 
   componentDidMount () {
-    console.log('didmount 접근')
     let self = this;
     let memberId = sessionStorage.getItem('memberId')
     axios
-      .get(`http://localhost:8080/members/find/${memberId}`)
+      .get(`http://52.79.235.166/members/find/${memberId}`)
       .then(res =>{
-        console.log('axios 접근')
-        console.log('memberId : ' + memberId)
-        console.log(res.data)
           const oneMember = res.data
           self.setState({
             memberName: oneMember.memberName,
             memberPw: oneMember.memberPw,
-            memberHeight: oneMember.member,
+            memberHeight: oneMember.memberHeight,
             memberPhoto: oneMember.memberPhoto,
             memberWeight: oneMember.memberWeight,
             memberText: oneMember.memberText,
@@ -52,7 +51,6 @@ class MyPage extends Component {
               })
               break
           }
-          console.log("들어온 사진 : "+ self.state.member.memberPhoto)
       })
       .catch(e=>{
         alert('didmount axios 실패')
@@ -102,7 +100,7 @@ class MyPage extends Component {
       e.preventDefault()
       const headers = { "Content-Type": "multipart/form-data" }
       axios
-        .post("http://localhost:8080/upload",data,{headers: headers})
+        .post("http://52.79.235.166/upload",data,{headers: headers})
         .then(res => {
           alert("사진이 업로드 되었습니다.")
           document.getElementById("memberPhoto").src = e.target.result
@@ -119,37 +117,37 @@ class MyPage extends Component {
    let memberId = sessionStorage.getItem("memberId")
    let memberEmail = sessionStorage.getItem("memberEmail")
 
-    let data = {
-      memberPw:this.state.memberPw,
-      memberName:this.state.memberName,
-      memberHeight:this.state.memberHeight,
-      memberWeight:this.state.memberWeight,
-      memberPhoto:this.state.memberPhoto,
-      memberText: this.state.memberText,
-      memberType: this.state.memberType,
-      memberEmail: memberEmail
-    }
+   //비밀번호를 변경하려면 새로운 값 입력, 아무것도 입력하지 않았을 때에는 기존의 비밀번호를 입력.
+   //입력한 비밀번호가 null 값일 때 --> 기존의 입력 값 입력
+   
+    let data= {
+        memberPw:this.state.memberPw,
+        memberName:this.state.memberName,
+        memberHeight:this.state.memberHeight,
+        memberWeight:this.state.memberWeight,
+        memberPhoto:this.state.memberPhoto,
+        memberText: this.state.memberText,
+        memberType: this.state.memberType,
+        memberEmail: memberEmail
+      }
 
-    console.log("나온 사진 : "+this.state.memberPhoto)
-
-    let headers ={
+    let headers= {
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
 
     axios
-      .put(`http://localhost:8080/members/update/${memberId}`,JSON.stringify(data),{headers: headers})
+      .put(`http://52.79.235.166/members/update/${memberId}`,JSON.stringify(data),{headers: headers})
       .then(res => {
         alert('수정 완료')
         sessionStorage.setItem("memberType", data.memberType)
         
-        console.log("data.memberPw : " + data.memberPw)
         window.location.assign('/')
       })
       .catch(e =>{
         alert('연결 실패')
       })
-    
   }
 
   // 탈퇴
@@ -157,7 +155,7 @@ class MyPage extends Component {
     e.preventDefault();
     let memberId = sessionStorage.getItem("memberId") 
     axios 
-      .delete(`http://localhost:8080/members/delete/${memberId}`)
+      .delete(`http://52.79.235.166/members/delete/${memberId}`)
       .then(res => {
         alert('삭제 성공')
         sessionStorage.clear();
@@ -166,6 +164,21 @@ class MyPage extends Component {
       .catch(e => {
         alert('삭제 axios 실패')
       })
+  }
+
+  coachFormExists() {
+    console.log('접근')
+    let memberId = sessionStorage.getItem('memberId')
+    axios.get(`http://52.79.235.166/coaches/exists/${memberId}`)
+      .then(res => {
+        console.log(res.data)
+        this.whichComp(res.data)
+      })
+  }
+
+  whichComp = (nextComp) => {
+    console.log(nextComp)
+    nextComp ? this.props.history.push('/CoachInForm') : this.props.history.push('/CoachInsertForm')
   }
 
   render() {
@@ -177,9 +190,6 @@ class MyPage extends Component {
           <Box direction="row" align="center" justify="center">
             <Box  flex align="center"  justify="center" overflow={{ vertical: "hidden" }}  >
               {/* 프로필 전체 영역 */}
-              {/* {this.state.member.map(member => {
-                return( */}
-              
               <Box direction="row-responsive" margin="medium">
                 {/* 사진, 상태메시지 */}
                   {/* 사진 */}
@@ -198,21 +208,20 @@ class MyPage extends Component {
                  <Form onSubmit={this.updateMyPage}>
                   <Box direction="column" width="medium">
                     <Text margin="small">상태 메시지</Text>
-                    <TextArea name="memberText" placeholder="상태 메세지" value={this.state.memberText} onChange={this.updateOnChange}></TextArea>
+                    <TextArea name="memberText" placeholder="상태 메세지" 
+                      value={this.state.memberText} onChange={this.updateOnChange}></TextArea>
                   </Box>
                   <Box justify="center" width="medium">
-                    <FormField type="name" name="memberName" label="이름" value={this.state.memberName} placeholder={this.state.memberName} onChange={this.updateOnChange}
-                      required validate={{regexp: /^[가-힝A-Za-z]{2,}$/, message: '이름을 입력해주세요'}}/>
+                    <FormField type="memberName" name="memberName" label="이름" value={this.state.memberName} placeholder={this.state.memberName} onChange={this.updateOnChange}/>
                   </Box>
                   <Box justify="center" width="medium">
-                    <FormField name="memberPw" label="비밀번호" type="password" value={this.state.memberPw} placeholder="비밀번호를 변경하려면 새로 입력해주세요" onChange={this.updateOnChange}
-                      required validate={{regexp: /[A-Za-z0-9]{6,12}$/, message: '숫자를 포함한 6~12자리 비밀번호를 입력해주세요.' }}/>
+                    <FormField name="memberPw" label="비밀번호" type="password" value={this.state.memberPw} placeholder="비밀번호를 변경하려면 새로 입력해주세요" onChange={this.updateOnChange}/>
                   </Box>
                   <Box justify="center" width="medium">
                     <FormField name="memberHeight" label="신장" value={this.state.memberHeight} placeholder={this.state.memberHeight} onChange={this.updateOnChange}/>
                   </Box>
                   <Box justify="center" width="medium">
-                    <FormField name="weight" label="몸무게" value={this.state.memberWeight} placeholder={this.state.memberWeight} onChange={this.updateOnChange}></FormField>
+                    <FormField name="memberWeight" label="몸무게" value={this.state.memberWeight} placeholder={this.state.memberWeight} onChange={this.updateOnChange}></FormField>
                   </Box>
                   <Box justify="center" width="medium">
                   <Box direction="column">
@@ -237,7 +246,11 @@ class MyPage extends Component {
                   </Box>
                   <Box align="center" justify="center" direction="row" margin="medium" width="medium">
                   <Box margin={{ horizontal: "medium" }}>
-                    <Button label="코치 회원 Page" primary href="../CoachInForm" />
+                  {(this.state.memberType === 2) && 
+                      <Box margin={{ horizontal: "medium" }}>
+                        <Button label="코치 회원 Page" primary onClick={this.coachFormExists} />
+                      </Box>
+                    }
                   </Box>
                   <Box margin={{ horizontal: "medium" }}>
                     <Button type="submit" label="탈 퇴" primary onClick={this.deleteAccout}/>
@@ -247,8 +260,6 @@ class MyPage extends Component {
                 </Box>
               {/* 프로필 전체 영역 / */}
               </Box>
-              {/* )
-            })} */}
             </Box>
           </Box>
         )}

@@ -40,21 +40,25 @@ class SignUp extends Component {
     }
     let headers ={
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
+    console.log("data : " + data)
     axios
-      .post(`http://localhost:8080/members/join`, JSON.stringify(data), {headers: headers})
+      .post(`http://52.79.235.166/members/join`, JSON.stringify(data), {headers: headers})
       .then(res =>{
         alert('회원 가입 성공')
         //처음 메인페이지로 보내기
-        console.log("res.data.memberPw : " + res.data.memberPw)
-        this.props.history.push('/')
+        this.props.history.push('/Login')
       })
       .catch(e =>{
         alert('axios 접근 실패')
       })
   }
-
+  // document.querySelectorAll(".StyledTextInput-sc-1x30a0s-0.duvNfq")[0].value="대박";
+  // document.querySelectorAll(".StyledTextInput-sc-1x30a0s-0.duvNfq")[1].value="test@naver.com";
+  // document.querySelectorAll(".StyledTextInput-sc-1x30a0s-0.duvNfq")[2].value="123123";
+  
   componentDidMount() {
     const { memberType } = this.props.match.params
     this.setState({ memberType: memberType })
@@ -77,7 +81,8 @@ class SignUp extends Component {
               <Box direction="row-responsive" justify="center" align="center" pad="xlarge" gap="medium" round margin={{ bottom: "5%" }} >
                 {/* 회원가입 폼 */}
                 <Box align="center" margin="medium">
-                  <Form onSubmit={this.join}>
+                  <Form>
+                  {/* <Form onSubmit={this.join}> */}
                     <FormField name="memberName" label="Name" type="name" value={this.state.memberName} onChange={this.joinSetState}
                       required validate={{regexp: /^[가-힝A-Za-z]{2,}$/, message: '이름을 입력해주세요'}}/>
                     <FormField name="memberEmail" label="Email" type="email" value={this.state.memberEmail} onChange={this.joinSetState} 
@@ -85,7 +90,8 @@ class SignUp extends Component {
                     <FormField  name="memberPw" label="Password" type="password" value={this.state.memberPw} onChange={this.joinSetState}
                       required validate={{regexp: /[A-Za-z0-9]{6,12}$/, message: '숫자를 포함한 6~12자리 비밀번호를 입력해주세요.' }}/>
                     <Box align="end" margin={{ top: "20%" }}>
-                      <Button type="submit" label="회원가입" primary />
+                      {/* <Button type="submit" label="회원가입" primary /> */}
+                      <Button label="회원가입" primary onClick={this.join} />
                     </Box>
                   </Form>
                 </Box>

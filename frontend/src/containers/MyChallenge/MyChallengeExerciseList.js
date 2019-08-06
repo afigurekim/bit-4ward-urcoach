@@ -16,20 +16,19 @@ class MyChallengeExerciseList extends Component {
 }
 
   componentDidMount() {
-    console.log("exerciselist componentDidMount 접근");
+    let self=this;
     const {myChallengeId, myChallengeName } = this.props.match.params;
-    console.log("myChallengeId : " + myChallengeId )
-    console.log("myChallengeName : " + myChallengeName )
 
-    this.setState({
-      myChallengeId
-    })
+    // this.setState({
+    //   myChallengeId
+    // })
+    
     axios
-        .get(`http://localhost:8080/MyExercise/findbymychallengeid/${myChallengeId}`)
+        .get(`http://52.79.235.166/MyExercise/findbymychallengeid/${myChallengeId}`)
         .then(res => {
-          console.log("res.data : " + res.data);
+          console.log("myChallengeId : " + myChallengeId)
           const myExercises = res.data
-            this.setState({
+          self.setState({
                 myExercises,
                 myChallengeName
             });
@@ -56,11 +55,12 @@ class MyChallengeExerciseList extends Component {
 
     let headers={
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
 
     axios
-      .put(`http://localhost:8080/MyExercise/update2/${myExerciseId}`,JSON.stringify(data),{headers: headers})
+      .put(`http://52.79.235.166/MyExercise/update2/${myExerciseId}`,JSON.stringify(data),{headers: headers})
       .then(res => {
         alert('운동 완료')
       })
@@ -95,7 +95,7 @@ class MyChallengeExerciseList extends Component {
                                   {/* 운동 제목 */}
                                   <Heading level="3"> {myExercise.exerciseId.exerciseName} </Heading>
                                   {/* 세트, 카운트 */}
-                                  <Box direction="row">
+                                  <Box direction="row"  gap="medium">
                                       <Text>{myExercise.myExerciseSet}</Text>
                                       <Text>{myExercise.myExerciseCount}</Text>
                                   </Box>

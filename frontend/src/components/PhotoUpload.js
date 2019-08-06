@@ -71,7 +71,7 @@ const PhotoUpload = () => {
   }, [files]);
 
   const uploadImg = files.forEach(file => {
-    let url = 'http://localhost:8080/';
+    let url = 'http://52.79.235.166/';
     let formData = new FormData();
     formData.append("file", file);
 

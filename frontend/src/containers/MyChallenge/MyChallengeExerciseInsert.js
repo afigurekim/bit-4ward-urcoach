@@ -17,10 +17,9 @@ class MyChallengeExercise extends Component {
 
   // 시작할 때 운동목록 값 뿌려준다.
   componentDidMount() {
-    console.log("componentDidMount mychallenge 접근 : ");
     const { myChallengeId } = this.props.match.params;
     axios
-      .get(`http://localhost:8080/exercises/findGroupByExerciseName`)
+      .get(`http://52.79.235.166/exercises/findGroupByExerciseName`)
       .then(res => {
         const exercises = res.data;
 
@@ -50,14 +49,8 @@ class MyChallengeExercise extends Component {
 
   // 운동 값 저장
   handleSubmit = (exerciseId, memberId, myChallengeId) => (e) => {
-    console.log('handleSubmit 접근')
     e.preventDefault();
     let memberId = sessionStorage.getItem("memberId")
-    console.log(this.state.myExerciseCount)
-    console.log(this.state.myExerciseSet)
-    console.log("exercise : "+ exerciseId)
-    console.log("memberId : "+memberId)
-    console.log("myChallengeId : "+ myChallengeId)
 
     this.setState({
       exerciseId
@@ -70,11 +63,12 @@ class MyChallengeExercise extends Component {
     
     let headers={
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
 
     axios
-      .post(`http://localhost:8080/MyExercise/insert/${memberId}/${exerciseId}/${myChallengeId}`, JSON.stringify(data), {headers: headers})
+      .post(`http://52.79.235.166/MyExercise/insert/${memberId}/${exerciseId}/${myChallengeId}`, JSON.stringify(data), {headers: headers})
       .then(res => {
         alert('저장 성공')
       })
@@ -131,7 +125,7 @@ class MyChallengeExercise extends Component {
                                          {/* 카운트 or 초 */}
                                         <Box direction="column" margin="small">
                                           <FormField label="카운트 & 초">
-                                            <TextInput name={this.myExerciseCount} onChange={this.myExerciseCountChange} placeholder=" ex) 20카운트 & 30초"></TextInput>
+                                            <TextInput name={this.myExerciseCount} onChange={this.myExerciseCountChange} placeholder=" ex) 20회 & 30초"></TextInput>
                                           </FormField>
                                         </Box>    
                                         <Button type="submit" label="저장"></Button>

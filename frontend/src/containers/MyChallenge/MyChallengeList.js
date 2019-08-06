@@ -21,19 +21,16 @@ class MyChallengeList extends Component {
   }
 
   componentDidMount(){
-    console.log("myChallengeName 접근")
     let memberId = sessionStorage.getItem("memberId")
     const { myChallengeId, exerciseId } = this.props.match.params;
     axios
-      .get(`http://localhost:8080/myChallenges/findbymemberid/${memberId}`)
+      .get(`http://52.79.235.166/myChallenges/findbymemberid/${memberId}`)
       .then(res => {
-        
         const myChallenges = res.data
         this.setState({
           myChallenges,
           myChallengeId,
           exerciseId
-
         })
       })
       .catch( e =>{
@@ -62,7 +59,7 @@ class MyChallengeList extends Component {
                   <Box direction="column" width="medium">
                     <Box>
                       <Link to = {{
-                        pathname : `/MyChallengeExerciseList/${myChallenge.myChallengeId}/${myChallenge.myChallengeName}/${this.state.exerciseId}`}}>
+                        pathname : `/MyChallengeExerciseList/${myChallenge.myChallengeId}/${myChallenge.myChallengeName}`}}>
                         <Button><Heading level="3">{myChallenge.myChallengeName}</Heading></Button>
                       </Link>
                     </Box>

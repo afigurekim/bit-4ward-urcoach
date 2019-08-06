@@ -19,18 +19,16 @@ class ChallengeList extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount 접근");
+    console.log("didMount 접근")
     axios
-      .get(`http://localhost:8080/challenges/findAll`)
+      .get(`http://52.79.235.166/challenges/findAll`)
       .then(res => {
-        // console.log(res);
         const challenges = res.data;
-        console.log("challenges : " + challenges) 
         this.setState({
           challenges
         });
       })
-      .catch(res => {
+      .catch(e => {
         alert("aixos 실패");
       });
   }

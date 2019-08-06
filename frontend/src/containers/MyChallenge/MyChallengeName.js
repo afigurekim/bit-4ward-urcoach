@@ -33,27 +33,21 @@ class MyChallengeName extends Component {
   //버튼 누르면 myChallengeName DB에 저장
   insertChallengeName = (memberId) => (e) => {
     e.preventDefault();
-    console.log("submit 이벤트 진입")
     let memberId = sessionStorage.getItem("memberId")
       let data={
         myChallengeName: this.state.myChallengeName
       }
       let headers={
-          'Content-type' : 'application/json',
-          'Authorization' : 'JWT fefege...'
+        'Content-type' : 'application/json',
+        // 'Authorization' : 'JWT fefege...'
+        'Access-Control-Allow-Origin': '*'
       }
         axios
-        .post(`http://localhost:8080/myChallenges/insert/${memberId}`,JSON.stringify(data), {headers: headers})
+        .post(`http://52.79.235.166/myChallenges/insert/${memberId}`,JSON.stringify(data), {headers: headers})
         .then(res =>{
-          console.log('myChallInsert Name 넣기')
-          console.log('res.data : '+ res.data)
-          console.log('res : '+ res)
-          console.log('data : '+ data)
-          console.log('this.state.myChallengeName : '+ this.state.myChallengeName)
-          // console.log('myChallengeName : '+ myChallengeName) 
           alert('저장완료')
           axios
-            .get(`http://localhost:8080/myChallenges/findFirstByOrderByMyChallengeIdDesc`)
+            .get(`http://52.79.235.166/myChallenges/findFirstByOrderByMyChallengeIdDesc`)
             .then(res => {
               const myChallenges = res.data
               this.setState({
@@ -94,12 +88,16 @@ class MyChallengeName extends Component {
                 </FormField>
                 {/* 버튼  */}
                 <Box direction="row-responsive" gap="large" align="center">
-                  <Button type="submit" label="저장" margin={{top:"10%"}}></Button>
+                    <Box>
+                      <Button type="submit" label="저장" margin={{ top: "10%" }}></Button>
+                    </Box>
+                    <Box>
                       <Link to = {{
                         pathname: `/MyChallengeExerciseInsert/${this.state.myChallenges.myChallengeId}`
                       }}>
                         <Button type="submit" label="다음" margin={{top:"10%"}}></Button>
                       </Link>
+                    </Box>  
                 </Box>
                 </Form>
               </Box>

@@ -30,14 +30,13 @@ class Login extends Component {
     }
     let headers ={
       'Content-type' : 'application/json',
-      'Authorization' : 'JWT fefege...'
+      // 'Authorization' : 'JWT fefege...'
+      'Access-Control-Allow-Origin': '*'
     }
     axios
-    
-      .post(`http://localhost:8080/members/login`,JSON.stringify(data), {headers: headers})
+      .post(`http://52.79.235.166/members/login`,JSON.stringify(data), {headers: headers})
       .then(res =>{
         if(res.data){
-          console.log("login : "+ res.data)
           alert('로그인 성공')
           sessionStorage.setItem("memberEmail", res.data.memberEmail)
           sessionStorage.setItem("memberId", res.data.memberId)
@@ -61,14 +60,15 @@ class Login extends Component {
                 {/* 로그인 제목 */}
                 <Heading margin={{ top: "10%" }}> 로그인 </Heading>
 
-                <Box direction="row-responsive" justify="center" align="center" pad="xlarge" gap="medium" round margin={{bottom:"5%"}}>
+                <Box direction="row-responsive" justify="center" align="center" pad="small" gap="medium" round margin={{bottom:"5%"}}>
                     {/* 로그인 폼 */}
                     <Box align="center" pad="large">
                         <Form onSubmit={this.login}>
                             <FormField type="Email" name="memberEmail" label="Email" value={this.state.memberEmail} onChange={this.loginSetState} />
                             <FormField name="memberPw" label="Password" type="password" value={this.state.memberPw} onChange={this.loginSetState} />
-                            <Box align="end" margin={{top:"20%"}}>
-                                <Button type="submit" label="로그인" primary />
+                            <Box  align="center" margin={{top:"20%"}} direction="row" gap="small">
+                              <Box> <Button label="회원가입으로 " primary href="/SignUpType" /> </Box>
+                              <Box> <Button type="submit" label="로그인" primary /> </Box>
                             </Box>
                         </Form>
                     </Box>
